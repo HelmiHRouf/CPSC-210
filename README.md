@@ -1,10 +1,27 @@
-# My Personal Project
+# Library Kiosk Software
 
-## A subtitle
+### A Software that Allows User to Utilize Library's Features
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+A simplified version of Library Management Software operated in Java that allow the library visitor to access 
+library features more efficiently. This software might be used in the public library or school library and the library
+visitor might want to make an account to get full access to the kiosk machine. This project interest me because
+I used to deal with library in manual manner, sometime it took me more time to que rather than actually study or
+read book there.
 
-An example of text with **bold** and *italic* fonts.  
+User Stories:
+- As a user:
+    - To be able to **make an account** containing Username, Password, List of borrowed book, and study room booking 
+  information.
+    - to be able to search book in the library based on category, year published, and ISBN number.
+    - to be able to **borrow** book(s) from the library.
+    - to be able to **return** book(s) from the library.
+    - to be able to **book** the study room inside the library.
+    - to be able to **cancel book** of the study room inside the library.
+  
+- As a librarian:
+    - To be able to **make an account** containing Username and Password.
+    - To be able to **track** list borrowed books.
+    - To be able to **track** list booked rooms.
+    - To be able to **add** book collection from the library's inventory.
+    - To be able to **remove** book collection from the library's inventory.
+
