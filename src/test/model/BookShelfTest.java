@@ -43,6 +43,21 @@ public class BookShelfTest {
     }
 
     @Test
+    void testFindBookCategory() {
+        List<Book> testList = new ArrayList<>();
+        assertEquals(testList, testBookShelf.findBookCategory("kakaka"));
+        testBookShelf.addBook(book1);
+        testBookShelf.addBook(book2);
+        testBookShelf.addBook(book3);
+        testBookShelf.addBook(book4);
+
+        testList.add(book1);
+        testList.add(book4);
+        assertEquals(testList, testBookShelf.findBookCategory("scientific"));
+
+    }
+
+    @Test
     void testFindBookYear() {
         List<Book> testList = new ArrayList<>();
         assertEquals(testList, testBookShelf.findBookYear(2020));
