@@ -54,7 +54,6 @@ public class BookShelfTest {
         testList.add(book1);
         testList.add(book4);
         assertEquals(testList, testBookShelf.findBookCategory("scientific"));
-
     }
 
     @Test
