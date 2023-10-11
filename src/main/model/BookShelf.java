@@ -16,14 +16,14 @@ public class BookShelf {
 
     // EFFECTS: return all books based on the given category
     public List<Book> findBookCategory(String pick) {
-        List<Book> bookListnew = new ArrayList<>();
+        List<Book> bookListNew = new ArrayList<>();
         for (Book book : bookList) {
             String category = book.getCategory();
             if (category.equals(pick)) {
-                bookListnew.add(book);
+                bookListNew.add(book);
             }
         }
-        return bookListnew;
+        return bookListNew;
     }
 
     // EFFECTS: return all books based on the given years
@@ -82,8 +82,8 @@ public class BookShelf {
         for (Book book : bookList) {
             bookTitle.add(book.getCategory());
         }
-        List<String> bookTitleWODuplicates =  new ArrayList<>(new HashSet<>(bookTitle));
-        return bookTitleWODuplicates;
+        bookTitle =  new ArrayList<>(new HashSet<>(bookTitle));
+        return bookTitle;
     }
 
     // EFFECT: Decide whether the book can be borrowed

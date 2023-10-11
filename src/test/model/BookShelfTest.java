@@ -30,15 +30,32 @@ public class BookShelfTest {
     }
     // do 12 test
 
+
     @Test
     void testConstructor() {
         testBookShelf.addBook(book1);
-        testBookShelf.addBook(book1);
+        testBookShelf.addBook(book2);
         assertEquals(2, testBookShelf.getBookList().size());
         testBookShelf.remove(0);
         assertEquals(1, testBookShelf.getBookList().size());
         testBookShelf.remove(0);
         assertEquals(0, testBookShelf.getBookList().size());
+    }
+
+    @Test
+    void testFindBookYear() {
+        List<Book> testList = new ArrayList<>();
+        assertEquals(testList, testBookShelf.findBookYear(2020));
+        testBookShelf.addBook(book1);
+        testBookShelf.addBook(book2);
+        testBookShelf.addBook(book3);
+
+        testList.add(book1);
+
+        List<Book> testList2 = new ArrayList<>();
+        assertEquals(testList, testBookShelf.findBookYear(2000));
+        assertEquals(testList2, testBookShelf.findBookYear(1000));
+
     }
 
     @Test
@@ -75,15 +92,16 @@ public class BookShelfTest {
 
     @Test
     void testGetBooksCategory() {
-        assertEquals(null, testBookShelf.getBooksCategory());
+        List<Book> testlist = new ArrayList<>();
+        assertEquals(testlist, testBookShelf.getBooksCategory());
 
         testBookShelf.addBook(book1);
         testBookShelf.addBook(book2);
         testBookShelf.addBook(book3);
 
         List<String> testStrings = new ArrayList<>();
-        testStrings.add("scientific");
         testStrings.add("fiction");
+        testStrings.add("scientific");
         testStrings.add("history");
 
         assertEquals(testStrings, testBookShelf.getBooksCategory());
@@ -122,11 +140,11 @@ public class BookShelfTest {
         assertFalse(book2.getIsBorrowed());
 
         testBookShelf.returnBook(user1);
-        assertEquals(null, user1.getBookborrowed());
+        assertNull(user1.getBookborrowed());
         assertFalse(book3.getIsBorrowed());
 
         testBookShelf.returnBook(user2);
-        assertEquals(null, user2.getBookborrowed());
+        assertNull(user2.getBookborrowed());
         assertFalse(book1.getIsBorrowed());
         assertFalse(book2.getIsBorrowed());
     }

@@ -83,6 +83,8 @@ public class AccountTest {
         testAccounts.addLibrarian(librarian2Id, librarian2Pw);
         assertEquals(1, testAccounts.loginUserIndex(user2Id, user2Pw));
         assertEquals(1, testAccounts.loginLibrarianIndex(librarian2Id, librarian2Pw));
+        assertEquals(0, testAccounts.loginUserIndex(user1Id, user1Pw));
+        assertEquals(0, testAccounts.loginLibrarianIndex(librarian1Id, librarian1Pw));
 
     }
 }
