@@ -24,7 +24,7 @@ public class StudyRooms {
         return !(room.getIsBooked());
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, User, StudyRoom
     // EFFECTS: book a study room, set the booked information, booker information, and tell who booked the room
     public void bookStudyRoom(User user, int roomId) {
         StudyRoom studyRoom = listStudyRoom.get(roomId);
@@ -33,7 +33,7 @@ public class StudyRooms {
         user.setRoomBooked(studyRoom);
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, User
     // EFFECTS: cancel book a study room, remove the booked information, booker information, and who booked the room
     public void cancelBookStudyRoom(User user) {
         StudyRoom studyRoom = user.getRoomBooked();

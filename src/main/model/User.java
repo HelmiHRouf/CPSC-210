@@ -3,7 +3,7 @@ package model;
 public class User {
     private String username;
     private String password;
-    private Book bookborrowed;
+    private Book bookBorrowed;
     private StudyRoom roomBooked;
 
     // REQUIRES: username and password need to be different string
@@ -11,7 +11,7 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.bookborrowed = null;
+        this.bookBorrowed = null;
         this.roomBooked = null;
     }
 
@@ -29,7 +29,7 @@ public class User {
     // setter
 
     public void setBookborrowed(Book book) {
-        this.bookborrowed = book;
+        this.bookBorrowed = book;
     }
 
     public void setRoomBooked(StudyRoom studyRoom) {
@@ -49,7 +49,7 @@ public class User {
     }
 
     public Book getBookborrowed() {
-        return this.bookborrowed;
+        return this.bookBorrowed;
     }
 
     public StudyRoom getRoomBooked() {

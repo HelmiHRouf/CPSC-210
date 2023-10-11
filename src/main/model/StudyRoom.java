@@ -13,10 +13,15 @@ public class StudyRoom {
     }
 
     // setter
+
+    // MODIFIES: this
+    // EFFECTS: set book with the given boolean
     public void setBooked(boolean booked) {
         this.isBooked = booked;
     }
 
+    // MODIFIES: this
+    // EFFECTS: set booker with the given user
     public void setBooker(User booker) {
         this.booker = booker;
     }

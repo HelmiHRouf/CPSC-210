@@ -18,11 +18,15 @@ public class Book {
         this.borrower = null;
     }
 
-    // Setter
+    /// Setter
+    // MODIFIES: this
+    // EFFECTS: set the borrowed book with given boolean.
     public void setBorrowed(Boolean borrowed) {
         this.isBorrowed = borrowed;
     }
 
+    // MODIFIES: this
+    // EFFECTS: set the borrowed with given User.
     public void setBorrower(User user) {
         this.borrower = user;
     }

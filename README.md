@@ -12,11 +12,12 @@ User Stories:
 - As a user:
     - To be able to **make an account** containing Username, Password, List of borrowed book, and study room booking 
   information.
-    - to be able to search book in the library based on category, year published, and ISBN number.
-    - to be able to **borrow** book(s) from the library.
-    - to be able to **return** book(s) from the library.
+    - to be able to search book in the library based on category, year published, and ISBN.
+    - to be able to **borrow** book(s) from the library. (just 1 book for now)
+    - to be able to **return** book(s) from the library. (just 1 book for now)
     - to be able to **book** the study room inside the library.
     - to be able to **cancel book** of the study room inside the library.
+    - to be able to **log out** and back to the main interface.
   
 - As a librarian:
     - To be able to **make an account** containing Username and Password.
@@ -26,4 +27,5 @@ User Stories:
     - To be able to **remove** book collection from the library's inventory.
     - To be able to **track** list of books and its information.
     - To be able to **track** list of rooms and its information.
+    - To be able to **log out** and back to the main interface.
 

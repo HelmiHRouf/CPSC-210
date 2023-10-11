@@ -15,7 +15,7 @@ public class Accounts {
         this.librarianList = new ArrayList<>();
     }
 
-    // REQUIRES: the user and librarian cannot have the same username along each other
+    // REQUIRES: the user cannot have the same username along each other
     // MODIFIES: This
     // EFFECTS add new user credential to the userList
     public void addUser(String username, String password) {
@@ -23,7 +23,7 @@ public class Accounts {
         userList.add(user);
     }
 
-    // REQUIRES: the user and librarian cannot have the same username along each other
+    // REQUIRES: the librarian cannot have the same username along each other
     // MODIFIES: This
     // EFFECTS: add new librarian credential to the userList
     public void addLibrarian(String username, String password) {
@@ -41,7 +41,7 @@ public class Accounts {
         return false;
     }
 
-    // REQUIRES: must log in succesfully
+    // REQUIRES: must log in successfully
     // EFFECTS: give the credential index of the user
     public int loginUserIndex(String username, String password) {
         int index = 0;
@@ -55,7 +55,6 @@ public class Accounts {
         return index;
     }
 
-
     // EFFECTS: give the login result to the librarian
     public boolean loginLibrarian(String username, String password) {
         for (Librarian librarian : librarianList) {
@@ -66,7 +65,7 @@ public class Accounts {
         return false;
     }
 
-    // REQUIRES: must log in succesfully
+    // REQUIRES: must log in successfully
     // EFFECTS: give the credential index of the librarian
     public int loginLibrarianIndex(String username, String password) {
         int index = 0;
@@ -80,14 +79,14 @@ public class Accounts {
         return index;
     }
 
-    //setter
+    //getter
 
-    // Return user at given index
+    // EFFECTS: Return user at given index
     public User getUser(int index) {
         return this.userList.get(index);
     }
 
-    // Return librarian at given index
+    // EFFECTS: Return librarian at given index
     public Librarian getLibrarian(int index) {
         return this.librarianList.get(index);
     }

@@ -96,7 +96,7 @@ public class BookShelf {
         return false;
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, User, Book
     // EFFECTS: borrow book from the bookshelf
     public void borrowBook(User user, int isbn) {
         Book borrowedBook = findBookIsbn(isbn);
@@ -105,7 +105,7 @@ public class BookShelf {
         borrowedBook.setBorrower(user);
     }
 
-    // MODIFIES: this
+    // MODIFIES: this, User, Book
     // EFFECTS: return book
     public void returnBook(User user) {
         Book borrowedBook = user.getBookborrowed();

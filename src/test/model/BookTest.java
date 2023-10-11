@@ -18,6 +18,7 @@ public class BookTest {
         assertEquals("scientific", testBook.getCategory());
         assertEquals(10201010, testBook.getNumIsbn());
         assertFalse(testBook.getIsBorrowed());
+        assertNull(testBook.getBorrower());
 
         testBook.setBorrowed(true);
         assertTrue(testBook.getIsBorrowed());
