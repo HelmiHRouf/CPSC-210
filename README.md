@@ -24,4 +24,6 @@ User Stories:
     - To be able to **track** list booked rooms.
     - To be able to **add** book collection from the library's inventory.
     - To be able to **remove** book collection from the library's inventory.
+    - To be able to **track** list of books and its information.
+    - To be able to **track** list of rooms and its information.
 
