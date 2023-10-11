@@ -427,8 +427,9 @@ public class Library {
         List<Book> borrowedBooks = bookShelf.getBorrowedBooks();
         int index = 0;
         for (Book book : borrowedBooks) {
-            System.out.println("index of " + index + ": " + book.getTitle() + ", " + book.getYearPublished() + ", "
-                    + book.getCategory() + ", " + book.getNumIsbn() + ", " + book.getIsBorrowed());
+            User user = book.getBorrower();
+            System.out.println("index of " + index + ": " + book.getTitle()
+                    + " has been booked by " + user.getUsername());
             index++;
         }
         System.out.println("Found " + index + " Book(s)!");

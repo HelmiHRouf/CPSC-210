@@ -6,6 +6,7 @@ public class Book {
     private String category;
     private int numIsbn;
     private boolean isBorrowed;
+    private User borrower;
 
     // EFFECTS: construct a new Book that is not borrowed yet.
     public Book(String title, int yearPublished, String category, int numIsbn) {
@@ -14,11 +15,16 @@ public class Book {
         this.category = category;
         this.numIsbn = numIsbn;
         this.isBorrowed = false;
+        this.borrower = null;
     }
 
     // Setter
     public void setBorrowed(Boolean borrowed) {
         this.isBorrowed = borrowed;
+    }
+
+    public void setBorrower(User user) {
+        this.borrower = user;
     }
 
 
@@ -41,5 +47,9 @@ public class Book {
 
     public Boolean getIsBorrowed() {
         return isBorrowed;
+    }
+
+    public User getBorrower() {
+        return borrower;
     }
 }

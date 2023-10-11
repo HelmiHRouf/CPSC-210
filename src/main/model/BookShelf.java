@@ -90,7 +90,7 @@ public class BookShelf {
     public boolean isBookBorrowed(int isbn) {
         for (Book book : bookList) {
             if (isbn == book.getNumIsbn()) {
-                return book.getIsBorrowed();
+                return !book.getIsBorrowed();
             }
         }
         return false;
@@ -102,6 +102,7 @@ public class BookShelf {
         Book borrowedBook = findBookIsbn(isbn);
         user.setBookborrowed(borrowedBook);
         borrowedBook.setBorrowed(true);
+        borrowedBook.setBorrower(user);
     }
 
     // MODIFIES: this
@@ -110,6 +111,7 @@ public class BookShelf {
         Book borrowedBook = user.getBookborrowed();
         user.setBookborrowed(null);
         borrowedBook.setBorrowed(false);
+        borrowedBook.setBorrower(null);
     }
 
 
