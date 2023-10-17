@@ -1,5 +1,6 @@
 package model;
 
+// represent librarian that has username and password
 public class Librarian {
     private String username;
     private String password;

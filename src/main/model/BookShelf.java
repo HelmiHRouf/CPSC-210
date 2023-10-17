@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-
+// this class represent lost of all book in the library. as a user, they can find book in this class based on year
+// published, numISBN, and category. This class can also display all the category available to the user. As a librarian
+// this class allows them to add and remove book in the bookshelf, get all book information, and get list of all
+// book that is borrowed and who borrowed it.
 public class BookShelf {
     private ArrayList<Book> bookList;
 

@@ -3,6 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// represent a list of user account and list of librarian account that is registered in this library.
+// this class allows user and librarina to register theirs given their username and password.
+// this class also allows user and librarian to login given that they already registered in.
 public class Accounts {
     private List<User> userList;
     private List<Librarian> librarianList;

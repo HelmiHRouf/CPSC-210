@@ -1,5 +1,7 @@
 package model;
 
+// represent a book with parameter title, year published, category, and numISBN.
+// the book also has field that represent is the book borrowed and who borrow the book
 public class Book {
     private String title;
     private int yearPublished;

@@ -242,7 +242,9 @@ public class Library {
         System.out.println("Congrats, your User account has been made!");
     }
 
-    /// all method for User
+    ///////////////////////////// All subdirectory for the user ////////////////////////////////
+
+    /////// Search Book Mechanism //////////
 
     // EFFECTS: make a find book mechanism
     private void doFindBook() {
@@ -334,6 +336,7 @@ public class Library {
         }
     }
 
+    /////// end of Search Book Mechanism //////////
 
     // MODIFIES: this
     // EFFECTS: make a borrow book mechanism
@@ -395,7 +398,7 @@ public class Library {
     }
 
 
-    /// All subdirectory for the librarian
+    ///////////////////////////// All subdirectory for the librarian ////////////////////////////////
 
     // MODIFIES: this
     // EFFECTS: add book to the BookShelf

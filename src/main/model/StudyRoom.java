@@ -1,5 +1,7 @@
 package model;
 
+// repreesnt a study room that has room ID, also contain field that represent whether this study room is booked and who
+// booked it.
 public class StudyRoom {
     private int roomID;
     private boolean isBooked;

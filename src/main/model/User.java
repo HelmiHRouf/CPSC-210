@@ -1,5 +1,7 @@
 package model;
 
+// represent a user with username and password. this class also represent whether the user borrow book and which book is
+// that, and also whether the user booked a study room and which study room is that.
 public class User {
     private String username;
     private String password;

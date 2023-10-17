@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// represent a list of study room. As a user, they can book and cancel book of the study room. As a librarian, they can
+// get all the study room information and get all the study room that is booked and who booked it.
 public class StudyRooms {
     private List<StudyRoom> listStudyRoom;
 
