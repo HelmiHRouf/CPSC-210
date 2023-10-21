@@ -66,7 +66,7 @@ public class BookShelf implements Writable {
     public List<Book> getBorrowedBooks() {
         List<Book> listBorrowedBooks = new ArrayList<>();
         for (Book book : bookList) {
-            if (book.getIsBorrowed()) {
+            if (!book.getBorrower().equals("")) {
                 listBorrowedBooks.add(book);
             }
         }
@@ -97,7 +97,7 @@ public class BookShelf implements Writable {
     public boolean isBookBorrowed(String isbn) {
         for (Book book : bookList) {
             if (isbn.equals(book.getNumIsbn())) {
-                return !book.getIsBorrowed();
+                return book.getBorrower().equals("");
             }
         }
         return false;
@@ -107,24 +107,24 @@ public class BookShelf implements Writable {
     // EFFECTS: borrow book from the bookshelf
     public void borrowBook(User user, String isbn) {
         Book borrowedBook = findBookIsbn(isbn);
-        user.setBookborrowed(borrowedBook);
-        borrowedBook.setBorrowed(true);
-        borrowedBook.setBorrower(user);
+        user.setBookborrowed(borrowedBook.getTitle());
+        borrowedBook.setBorrower(user.getUsername());
     }
 
     // MODIFIES: this, User, Book
     // EFFECTS: return book
     public void returnBook(User user) {
-        Book borrowedBook = user.getBookborrowed();
-        user.setBookborrowed(null);
-        borrowedBook.setBorrowed(false);
-        borrowedBook.setBorrower(null);
+        String numIsbn = user.getBookBorrowedIsbn();
+        user.setBookborrowed("");
+        Book book = findBookIsbn(numIsbn);
+        book.setBorrower("");
+        user.setBookBorrowedIsbn("");
     }
 
 
     public JSONObject toJson() {
         JSONObject jsonBookShelf = new JSONObject();
-        jsonBookShelf.put("books", bookToJson());
+        jsonBookShelf.put("bookList", bookToJson());
         return jsonBookShelf;
     }
 
