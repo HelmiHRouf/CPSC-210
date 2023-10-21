@@ -6,42 +6,41 @@ import persistence.Writable;
 // repreesnt a study room that has room ID, also contain field that represent whether this study room is booked and who
 // booked it.
 public class StudyRoom implements Writable {
-    private String roomID;
-    private boolean isBooked;
-    private User booker;
+    private int roomID;
+    //private boolean isBooked;
+    private String booker;
 
     // EFFECTS: construct a Study Room with roomID as an index, no one Booked and not booked yet
-    public StudyRoom(String roomID) {
+    public StudyRoom(int roomID) {
         this.roomID = roomID;
-        this.isBooked = false;
-        this.booker = null;
+        this.booker = "";
     }
 
     // setter
 
     // MODIFIES: this
     // EFFECTS: set book with the given boolean
-    public void setBooked(boolean booked) {
-        this.isBooked = booked;
-    }
+//    public void setBooked(boolean booked) {
+//        this.isBooked = booked;
+//    }
 
     // MODIFIES: this
     // EFFECTS: set booker with the given user
-    public void setBooker(User booker) {
-        this.booker = booker;
+    public void setBooker(String username) {
+        this.booker = username;
     }
 
     // getter
 
-    public String getRoomID() {
+    public int getRoomID() {
         return this.roomID;
     }
 
-    public boolean getIsBooked() {
-        return isBooked;
-    }
+//    public boolean getIsBooked() {
+//        return isBooked;
+//    }
 
-    public User getBooked() {
+    public String getBooked() {
         return this.booker;
     }
 
@@ -49,8 +48,7 @@ public class StudyRoom implements Writable {
     public JSONObject toJson() {
         JSONObject jsonStudyRoom = new JSONObject();
         jsonStudyRoom.put("room ID", roomID);
-        jsonStudyRoom.put("isBooked", isBooked);
-        jsonStudyRoom.put("booker", booker.toJson());
+        jsonStudyRoom.put("booker", booker);
         return jsonStudyRoom;
     }
 }
