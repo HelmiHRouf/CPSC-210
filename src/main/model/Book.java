@@ -10,8 +10,7 @@ public class Book implements Writable {
     private int yearPublished;
     private String category;
     private String numIsbn;
-    private boolean isBorrowed;
-    private User borrower;
+    private String borrower;
 
     // EFFECTS: construct a new Book that is not borrowed yet.
     public Book(String title, int yearPublished, String category, String numIsbn) {
@@ -19,21 +18,20 @@ public class Book implements Writable {
         this.yearPublished = yearPublished;
         this.category = category;
         this.numIsbn = numIsbn;
-        this.isBorrowed = false;
-        this.borrower = null;
+        this.borrower = "";
     }
 
     /// Setter
     // MODIFIES: this
     // EFFECTS: set the borrowed book with given boolean.
-    public void setBorrowed(Boolean borrowed) {
-        this.isBorrowed = borrowed;
-    }
+//    public void setBorrowed(Boolean borrowed) {
+//        this.isBorrowed = borrowed;
+//    }
 
     // MODIFIES: this
     // EFFECTS: set the borrowed with given User.
-    public void setBorrower(User user) {
-        this.borrower = user;
+    public void setBorrower(String username) {
+        this.borrower = username;
     }
 
 
@@ -54,11 +52,11 @@ public class Book implements Writable {
         return numIsbn;
     }
 
-    public Boolean getIsBorrowed() {
-        return isBorrowed;
-    }
+//    public Boolean getIsBorrowed() {
+//        return isBorrowed;
+//    }
 
-    public User getBorrower() {
+    public String getBorrower() {
         return borrower;
     }
 
@@ -66,9 +64,8 @@ public class Book implements Writable {
         JSONObject jsonBook = new JSONObject();
         jsonBook.put("title", title);
         jsonBook.put("year published", yearPublished);
-        jsonBook.put("num ISBN", numIsbn);
         jsonBook.put("category", category);
-        jsonBook.put("is borrowed", isBorrowed);
+        jsonBook.put("num ISBN", numIsbn);
         jsonBook.put("borrower", borrower);
         return jsonBook;
     }
