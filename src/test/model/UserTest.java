@@ -20,9 +20,9 @@ public class UserTest {
         user1Pw = "user1Pw";
         user2Id = "user2Id";
         user2Pw = "user2Pw";
-        book1 = new Book("Fundamental Astronomy", 2000, "scientific", 10201010);
-        book2 = new Book("I hope I can fly", 2010, "fiction", 21421282);
-        studyRoom1 = new StudyRoom(01);
+        book1 = new Book("Fundamental Astronomy", 2000, "scientific", "10201010");
+        book2 = new Book("I hope I can fly", 2010, "fiction", "21421282");
+        studyRoom1 = new StudyRoom("1");
     }
     // 2 method and setter getter
 

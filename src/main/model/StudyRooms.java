@@ -1,11 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // represent a list of study room. As a user, they can book and cancel book of the study room. As a librarian, they can
 // get all the study room information and get all the study room that is booked and who booked it.
-public class StudyRooms {
+public class StudyRooms implements Writable {
     private List<StudyRoom> listStudyRoom;
 
 
@@ -58,5 +62,21 @@ public class StudyRooms {
     // EFFECTS: pass all the StudyRoom
     public List<StudyRoom> getListStudyRoom() {
         return listStudyRoom;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonStudyRooms = new JSONObject();
+        jsonStudyRooms.put("study rooms", studyRoomToJson());
+        return jsonStudyRooms;
+    }
+
+    private JSONArray studyRoomToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (StudyRoom studyRoom : listStudyRoom) {
+            jsonArray.put(studyRoom.toJson());
+        }
+
+        return jsonArray;
     }
 }

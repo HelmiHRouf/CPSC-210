@@ -1,14 +1,17 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // repreesnt a study room that has room ID, also contain field that represent whether this study room is booked and who
 // booked it.
-public class StudyRoom {
-    private int roomID;
+public class StudyRoom implements Writable {
+    private String roomID;
     private boolean isBooked;
     private User booker;
 
     // EFFECTS: construct a Study Room with roomID as an index, no one Booked and not booked yet
-    public StudyRoom(int roomID) {
+    public StudyRoom(String roomID) {
         this.roomID = roomID;
         this.isBooked = false;
         this.booker = null;
@@ -30,7 +33,7 @@ public class StudyRoom {
 
     // getter
 
-    public int getRoomID() {
+    public String getRoomID() {
         return this.roomID;
     }
 
@@ -40,5 +43,14 @@ public class StudyRoom {
 
     public User getBooked() {
         return this.booker;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonStudyRoom = new JSONObject();
+        jsonStudyRoom.put("room ID", roomID);
+        jsonStudyRoom.put("isBooked", isBooked);
+        jsonStudyRoom.put("booker", booker.toJson());
+        return jsonStudyRoom;
     }
 }

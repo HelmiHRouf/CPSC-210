@@ -11,7 +11,7 @@ public class BookTest {
 
     @Test
     void testConstructor() {
-        testBook = new Book("Fundamental Astronomy", 2000, "scientific", 10201010);
+        testBook = new Book("Fundamental Astronomy", 2000, "scientific", "10201010");
 
         assertEquals("Fundamental Astronomy", testBook.getTitle());
         assertEquals(2000, testBook.getYearPublished());

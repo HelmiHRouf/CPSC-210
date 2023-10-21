@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // represent librarian that has username and password
-public class Librarian {
+public class Librarian implements Writable {
     private String username;
     private String password;
 
@@ -19,5 +22,13 @@ public class Librarian {
 
     public String getPassword() {
         return this.password;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonLibrarian = new JSONObject();
+        jsonLibrarian.put("username", username);
+        jsonLibrarian.put("password", password);
+        return jsonLibrarian;
     }
 }

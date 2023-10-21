@@ -1,17 +1,20 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // represent a book with parameter title, year published, category, and numISBN.
 // the book also has field that represent is the book borrowed and who borrow the book
-public class Book {
+public class Book implements Writable {
     private String title;
     private int yearPublished;
     private String category;
-    private int numIsbn;
+    private String numIsbn;
     private boolean isBorrowed;
     private User borrower;
 
     // EFFECTS: construct a new Book that is not borrowed yet.
-    public Book(String title, int yearPublished, String category, int numIsbn) {
+    public Book(String title, int yearPublished, String category, String numIsbn) {
         this.title = title;
         this.yearPublished = yearPublished;
         this.category = category;
@@ -47,7 +50,7 @@ public class Book {
         return this.category;
     }
 
-    public int getNumIsbn() {
+    public String getNumIsbn() {
         return numIsbn;
     }
 
@@ -57,5 +60,16 @@ public class Book {
 
     public User getBorrower() {
         return borrower;
+    }
+
+    public JSONObject toJson() {
+        JSONObject jsonBook = new JSONObject();
+        jsonBook.put("title", title);
+        jsonBook.put("year published", yearPublished);
+        jsonBook.put("num ISBN", numIsbn);
+        jsonBook.put("category", category);
+        jsonBook.put("is borrowed", isBorrowed);
+        jsonBook.put("borrower", borrower);
+        return jsonBook;
     }
 }

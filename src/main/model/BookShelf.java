@@ -1,5 +1,9 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,7 +12,7 @@ import java.util.List;
 // published, numISBN, and category. This class can also display all the category available to the user. As a librarian
 // this class allows them to add and remove book in the bookshelf, get all book information, and get list of all
 // book that is borrowed and who borrowed it.
-public class BookShelf {
+public class BookShelf implements Writable {
     private ArrayList<Book> bookList;
 
     // EFFECTS: construct a new BookShelf
@@ -70,9 +74,9 @@ public class BookShelf {
     }
 
     // EFFECTS: find book given isbn
-    public Book findBookIsbn(int isbn) {
+    public Book findBookIsbn(String isbn) {
         for (Book book : bookList) {
-            if (isbn == book.getNumIsbn()) {
+            if (isbn.equals(book.getNumIsbn())) {
                 return book;
             }
         }
@@ -90,9 +94,9 @@ public class BookShelf {
     }
 
     // EFFECT: Decide whether the book can be borrowed
-    public boolean isBookBorrowed(int isbn) {
+    public boolean isBookBorrowed(String isbn) {
         for (Book book : bookList) {
-            if (isbn == book.getNumIsbn()) {
+            if (isbn.equals(book.getNumIsbn())) {
                 return !book.getIsBorrowed();
             }
         }
@@ -101,7 +105,7 @@ public class BookShelf {
 
     // MODIFIES: this, User, Book
     // EFFECTS: borrow book from the bookshelf
-    public void borrowBook(User user, int isbn) {
+    public void borrowBook(User user, String isbn) {
         Book borrowedBook = findBookIsbn(isbn);
         user.setBookborrowed(borrowedBook);
         borrowedBook.setBorrowed(true);
@@ -118,4 +122,19 @@ public class BookShelf {
     }
 
 
+    public JSONObject toJson() {
+        JSONObject jsonBookShelf = new JSONObject();
+        jsonBookShelf.put("books", bookToJson());
+        return jsonBookShelf;
+    }
+
+    // EFFECTS: returns books in this bookshelf as a JSON array
+    private JSONArray bookToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Book book : bookList) {
+            jsonArray.put(book.toJson());
+        }
+
+        return jsonArray;
+    }
 }

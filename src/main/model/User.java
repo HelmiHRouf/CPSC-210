@@ -1,8 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // represent a user with username and password. this class also represent whether the user borrow book and which book is
 // that, and also whether the user booked a study room and which study room is that.
-public class User {
+public class User implements Writable {
     private String username;
     private String password;
     private Book bookBorrowed;
@@ -39,8 +42,6 @@ public class User {
     }
 
 
-
-
     // getter
     public String getUsername() {
         return this.username;
@@ -56,5 +57,15 @@ public class User {
 
     public StudyRoom getRoomBooked() {
         return this.roomBooked;
+    }
+
+
+    public JSONObject toJson() {
+        JSONObject jsonUser = new JSONObject();
+        jsonUser.put("username", username);
+        jsonUser.put("password", password);
+        jsonUser.put("bookBorrowed", bookBorrowed.toJson());
+        jsonUser.put("roomBooked", roomBooked.toJson());
+        return jsonUser;
     }
 }

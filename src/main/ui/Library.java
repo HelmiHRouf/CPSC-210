@@ -59,11 +59,11 @@ public class Library {
     // MODIFIES: this
     // EFFECTS: initializes accounts, bookShelf, and studyRooms
     private void init() {
-        book1 = new Book("Fundamental Astronomy", 2000, "scientific", 10201010);
-        book2 = new Book("I hope I can fly", 2010, "fiction", 21421282);
-        book3 = new Book("World War 2 Explained", 1990, "history", 13348593);
-        book4 = new Book("Elementary C++", 1992, "scientific", 23172564);
-        book5 = new Book("How Can I get Her", 2010, "fiction", 12460549);
+        book1 = new Book("Fundamental Astronomy", 2000, "scientific", "10201010");
+        book2 = new Book("I hope I can fly", 2010, "fiction", "21421282");
+        book3 = new Book("World War 2 Explained", 1990, "history", "13348593");
+        book4 = new Book("Elementary C++", 1992, "scientific", "23172564");
+        book5 = new Book("How Can I get Her", 2010, "fiction", "12460549");
         user = new User("joe", "111");
         librarian = new Librarian("sam", "222");
         accounts = new Accounts();
@@ -83,12 +83,12 @@ public class Library {
     // MODIFIES: this
     // EFFECTS: declare a study Rooms with 6 study room inside
     private void addStudyRooms() {
-        studyRoom1 = new StudyRoom(01);
-        studyRoom2 = new StudyRoom(02);
-        studyRoom3 = new StudyRoom(03);
-        studyRoom4 = new StudyRoom(04);
-        studyRoom5 = new StudyRoom(05);
-        studyRoom6 = new StudyRoom(06);
+        studyRoom1 = new StudyRoom("01");
+        studyRoom2 = new StudyRoom("02");
+        studyRoom3 = new StudyRoom("03");
+        studyRoom4 = new StudyRoom("04");
+        studyRoom5 = new StudyRoom("05");
+        studyRoom6 = new StudyRoom("06");
         studyRooms = new StudyRooms();
         studyRooms.addStudyRoom(studyRoom1);
         studyRooms.addStudyRoom(studyRoom2);
@@ -265,7 +265,7 @@ public class Library {
                 doFindBookYear(year);
             } else if (pick.equals("i")) {
                 System.out.println("Insert the ISBN Number");
-                int isbn = input.nextInt();
+                String isbn = input.next();
                 findBookIsbn(isbn);
             } else {
                 keepGoing = false;
@@ -326,7 +326,7 @@ public class Library {
     }
 
     // EFFECTS Display book based on the given ISBN
-    private void findBookIsbn(int isbn) {
+    private void findBookIsbn(String isbn) {
         Book book = bookShelf.findBookIsbn(isbn);
         System.out.println(book.getTitle() + ", Published at " + book.getYearPublished());
         if (book == null) {
@@ -342,10 +342,10 @@ public class Library {
     // EFFECTS: make a borrow book mechanism
     private void doBorrowBook(User user) {
         if (user.canBorrowBook()) {
-            int pick;
+            String pick;
             System.out.println("Make sure you already know the ISBN of the book or find it at the find book feature!");
             System.out.println("Insert the ISBN Number:");
-            pick = input.nextInt();
+            pick = input.next();
             if (bookShelf.isBookBorrowed(pick)) {
                 bookShelf.borrowBook(user, pick);
                 System.out.println("User " + user.getUsername() + " has Borrowed book with " + pick + " as the ISBN!");
@@ -410,7 +410,7 @@ public class Library {
         System.out.println("Insert the Category of the Book");
         String category = input.next();
         System.out.println("Insert the ISBN of the Book");
-        int isbn = input.nextInt();
+        String isbn = input.next();
         Book newBook = new Book(title, year, category, isbn);
         bookShelf.addBook(newBook);
         System.out.println("Book Has been Added!");

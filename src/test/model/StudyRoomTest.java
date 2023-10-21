@@ -11,8 +11,8 @@ public class StudyRoomTest {
 
     @Test
     void testConstructor() {
-        studyRoom = new StudyRoom(0);
-        assertEquals(0, studyRoom.getRoomID());
+        studyRoom = new StudyRoom("0");
+        assertEquals("0", studyRoom.getRoomID());
         assertFalse(studyRoom.getIsBooked());
         assertEquals(null, studyRoom.getBooked());
     }
@@ -20,8 +20,8 @@ public class StudyRoomTest {
     @Test
     void testsetBookedAndBooker() {
         user = new User("aaa", "bbb");
-        studyRoom = new StudyRoom(1);
-        assertEquals(1, studyRoom.getRoomID());
+        studyRoom = new StudyRoom("1");
+        assertEquals("1", studyRoom.getRoomID());
         assertFalse(studyRoom.getIsBooked());
         assertEquals(null, studyRoom.getBooked());
 

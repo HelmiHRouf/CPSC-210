@@ -1,12 +1,16 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // represent a list of user account and list of librarian account that is registered in this library.
 // this class allows user and librarina to register theirs given their username and password.
 // this class also allows user and librarian to login given that they already registered in.
-public class Accounts {
+public class Accounts implements Writable {
     private List<User> userList;
     private List<Librarian> librarianList;
 
@@ -92,5 +96,33 @@ public class Accounts {
     // EFFECTS: Return librarian at given index
     public Librarian getLibrarian(int index) {
         return this.librarianList.get(index);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject jsonAccount = new JSONObject();
+        jsonAccount.put("user", userToJson());
+        jsonAccount.put("librarian", librarianToJson());
+        return jsonAccount;
+    }
+
+    // EFFECTS: returns users in this account as a JSON array
+    private JSONArray userToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (User user : userList) {
+            jsonArray.put(user.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns libarians in this account as a JSON array
+    private JSONArray librarianToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Librarian librarian : librarianList) {
+            jsonArray.put(librarian.toJson());
+        }
+
+        return jsonArray;
     }
 }

@@ -20,10 +20,10 @@ public class StudyRoomsTest {
     @BeforeEach
     void runBefore() {
         testStudyRooms = new StudyRooms();
-        studyRoom1 = new StudyRoom(0);
-        studyRoom2 = new StudyRoom(01);
-        studyRoom3 = new StudyRoom(02);
-        studyRoom4 = new StudyRoom(03);
+        studyRoom1 = new StudyRoom("0");
+        studyRoom2 = new StudyRoom("1");
+        studyRoom3 = new StudyRoom("2");
+        studyRoom4 = new StudyRoom("3");
         user1 = new User("aaa", "bbb");
         user2 = new User("ccc", "ddd");
     }
