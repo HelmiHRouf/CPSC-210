@@ -98,6 +98,16 @@ public class Accounts implements Writable {
         return this.librarianList.get(index);
     }
 
+    // EFFECTS: Return all users
+    public List<User> getAllUser() {
+        return this.userList;
+    }
+
+    // EFFECTS: Return all librarians
+    public List<Librarian> getAllLibrarian() {
+        return this.librarianList;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject jsonAccount = new JSONObject();

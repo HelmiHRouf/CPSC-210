@@ -2,41 +2,67 @@ package ui;
 
 
 import model.*;
+import persistence.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+// represent a library kiosk app
 public class Library {
-    private User user;
-    private Librarian librarian;
+    private static final String JSON_STORE_ACCOUNTS = "./data/accounts.json";
+    private static final String JSON_STORE_BOOK_SHELF = "./data/bookShelf.json";
+    private static final String JSON_STORE_STUDY_ROOMS = "./data/studyRooms.json";
+    private JsonWriterAccounts jsonWriterAccounts;
+    private JsonWriterBookShelf jsonWriterBookShelf;
+    private JsonWriterStudyRooms jsonWriterStudyRooms;
+    private JsonReaderAccounts jsonReaderAccounts;
+    private JsonReaderBookShelf jsonReaderBookShelf;
+    private JsonReaderStudyRooms jsonReaderStudyRooms;
+    private Scanner input;
+
     private Accounts accounts;
     private BookShelf bookShelf;
     private StudyRooms studyRooms;
-    private Book book1;
-    private Book book2;
-    private Book book3;
-    private Book book4;
-    private Book book5;
-    private StudyRoom studyRoom1;
-    private StudyRoom studyRoom2;
-    private StudyRoom studyRoom3;
-    private StudyRoom studyRoom4;
-    private StudyRoom studyRoom5;
-    private StudyRoom studyRoom6;
-    private Scanner input;
 
 
     public Library() {
+        jsonWriterAccounts = new JsonWriterAccounts(JSON_STORE_ACCOUNTS);
+        jsonReaderAccounts = new JsonReaderAccounts(JSON_STORE_ACCOUNTS);
+        jsonWriterBookShelf = new JsonWriterBookShelf(JSON_STORE_BOOK_SHELF);
+        jsonReaderBookShelf = new JsonReaderBookShelf(JSON_STORE_BOOK_SHELF);
+        jsonWriterStudyRooms = new JsonWriterStudyRooms(JSON_STORE_STUDY_ROOMS);
+        jsonReaderStudyRooms = new JsonReaderStudyRooms(JSON_STORE_STUDY_ROOMS);
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
         runLibrary();
     }
 
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runLibrary() {
+        String command = null;
+        System.out.println("Do you want to load exsisting Library?");
+        System.out.println("\ty -> yes, get the exsisting library");
+        System.out.println("\tn -> no, go to the blank library");
+        command = input.next();
+        command = command.toLowerCase();
+        if (command.equals("y")) {
+            loadAccounts();
+            loadBookShelf();
+            loadStudyRooms();
+            runLibraryHelper();
+        } else if (command.equals("n")) {
+            init();
+            runLibraryHelper();
+        }
+
+    }
+
+    private void runLibraryHelper() {
         boolean stillHere = true;
         String command = null;
-        init();
-
         while (stillHere) {
             displayMenu();
             command = input.next();
@@ -53,49 +79,32 @@ public class Library {
                 registerUserUI();
             }
         }
+        saveBeforeQuit();
+    }
+
+    private void saveBeforeQuit() {
+        String command = null;
+        System.out.println("Do you want to save all changes in Library?");
+        System.out.println("\ty -> yes, save the changes");
+        System.out.println("\tn -> no, quit without saving");
+        command = input.next();
+        command = command.toLowerCase();
+        if (command.equals("y")) {
+            saveAccounts();
+            saveBookShelf();
+            saveStudyRooms();
+        } else if (command.equals("n")) {
+            System.out.println("Quit without saving...");
+        }
         System.out.println("\n Thank you for visiting our Library, Goodbye!");
     }
 
     // MODIFIES: this
     // EFFECTS: initializes accounts, bookShelf, and studyRooms
     private void init() {
-        book1 = new Book("Fundamental Astronomy", 2000, "scientific", "10201010");
-        book2 = new Book("I hope I can fly", 2010, "fiction", "21421282");
-        book3 = new Book("World War 2 Explained", 1990, "history", "13348593");
-        book4 = new Book("Elementary C++", 1992, "scientific", "23172564");
-        book5 = new Book("How Can I get Her", 2010, "fiction", "12460549");
-        user = new User("joe", "111");
-        librarian = new Librarian("sam", "222");
         accounts = new Accounts();
-        accounts.addUser(user.getUsername(), user.getPassword());
-        accounts.addLibrarian(librarian.getUsername(), librarian.getPassword());
         bookShelf = new BookShelf();
-        bookShelf.addBook(book1);
-        bookShelf.addBook(book2);
-        bookShelf.addBook(book3);
-        bookShelf.addBook(book4);
-        bookShelf.addBook(book5);
-        addStudyRooms(); //use Helper to reduce the total line of the code
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
-    }
-
-    // MODIFIES: this
-    // EFFECTS: declare a study Rooms with 6 study room inside
-    private void addStudyRooms() {
-        studyRoom1 = new StudyRoom("01");
-        studyRoom2 = new StudyRoom("02");
-        studyRoom3 = new StudyRoom("03");
-        studyRoom4 = new StudyRoom("04");
-        studyRoom5 = new StudyRoom("05");
-        studyRoom6 = new StudyRoom("06");
         studyRooms = new StudyRooms();
-        studyRooms.addStudyRoom(studyRoom1);
-        studyRooms.addStudyRoom(studyRoom2);
-        studyRooms.addStudyRoom(studyRoom3);
-        studyRooms.addStudyRoom(studyRoom4);
-        studyRooms.addStudyRoom(studyRoom5);
-        studyRooms.addStudyRoom(studyRoom6);
     }
 
     // EFFECTS: displays menu of options to user
@@ -285,8 +294,8 @@ public class Library {
     // EFFECTS: Display the Books categories
     private void showCategory() {
         System.out.println("\nType to select Category:");
-        List<String> bookCatergory = bookShelf.getBooksCategory();
-        for (String category : bookCatergory) {
+        List<String> booksCategory = bookShelf.getBooksCategory();
+        for (String category : booksCategory) {
             System.out.println(category);
         }
     }
@@ -348,7 +357,8 @@ public class Library {
             pick = input.next();
             if (bookShelf.isBookBorrowed(pick)) {
                 bookShelf.borrowBook(user, pick);
-                System.out.println("User " + user.getUsername() + " has Borrowed book with " + pick + " as the ISBN!");
+                System.out.println("User " + user.getUsername()
+                        + " has Borrowed book " + user.getBookborrowed() + " !");
             } else {
                 System.out.println("This book has been borrowed, perhaps borrow an other book?");
             }
@@ -389,7 +399,7 @@ public class Library {
     // MODIFIES: this
     // EFFECTS: cancel book a study room
     private void doUnBookStudyRoom(User user) {
-        if ((user.getRoomBooked() == null)) {
+        if ((user.getRoomBooked() == -1)) {
             System.out.println("You have no study room booked, please book a room in advance to cancel the book!");
         } else {
             studyRooms.cancelBookStudyRoom(user);
@@ -430,9 +440,8 @@ public class Library {
         List<Book> borrowedBooks = bookShelf.getBorrowedBooks();
         int index = 0;
         for (Book book : borrowedBooks) {
-            User user = book.getBorrower();
             System.out.println("index of " + index + ": " + book.getTitle()
-                    + " has been booked by " + user.getUsername());
+                    + " has been booked by " + book.getBorrower());
             index++;
         }
         System.out.println("Found " + index + " Book(s)!");
@@ -444,9 +453,8 @@ public class Library {
         List<StudyRoom> listBookedRooms = studyRooms.listBookedRooms();
         int index = 0;
         for (StudyRoom room : listBookedRooms) {
-            User user = room.getBooked();
             System.out.println("index of " + index + ": room " + room.getRoomID()
-                    + " has been booked by " + user.getUsername());
+                    + " has been booked by " + room.getBooked());
             index++;
         }
         System.out.println("Found " + index + " Study Room(s)!");
@@ -458,7 +466,7 @@ public class Library {
         int index = 0;
         for (Book book : bookList) {
             System.out.println("index of " + index + ": " + book.getTitle() + ", " + book.getYearPublished() + ", "
-                    + book.getCategory() + ", " + book.getNumIsbn() + ", " + book.getIsBorrowed());
+                    + book.getCategory() + ", " + book.getNumIsbn() + ", " + book.getBorrower());
             index++;
         }
         System.out.println("Found " + index + " Book(s)!");
@@ -469,12 +477,82 @@ public class Library {
         List<StudyRoom> studyRoomList = studyRooms.getListStudyRoom();
         int index = 0;
         for (StudyRoom room : studyRoomList) {
-            User user = room.getBooked();
             System.out.println("index of " + index + ": room " + room.getRoomID()
-                    + ", is booked? " + room.getIsBooked());
+                    + ", is booked? " + room.getBooked());
             index++;
         }
         System.out.println("Found " + index + " Study Room(s)!");
+    }
+
+
+    // EFFECTS: saves the Accounts to file
+    private void saveAccounts() {
+        try {
+            jsonWriterAccounts.open();
+            jsonWriterAccounts.write(accounts);
+            jsonWriterAccounts.close();
+            System.out.println("Saved Accounts to " + JSON_STORE_ACCOUNTS);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE_ACCOUNTS);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads Accounts from file
+    private void loadAccounts() {
+        try {
+            accounts = jsonReaderAccounts.read();
+            System.out.println("Loaded Accounts from " + JSON_STORE_ACCOUNTS);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE_ACCOUNTS);
+        }
+    }
+
+
+    // EFFECTS: saves the BookShelf to file
+    private void saveBookShelf() {
+        try {
+            jsonWriterBookShelf.open();
+            jsonWriterBookShelf.write(bookShelf);
+            jsonWriterBookShelf.close();
+            System.out.println("Saved Accounts to " + JSON_STORE_BOOK_SHELF);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE_BOOK_SHELF);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads BookShelf from file
+    private void loadBookShelf() {
+        try {
+            bookShelf = jsonReaderBookShelf.read();
+            System.out.println("Loaded Accounts from " + JSON_STORE_BOOK_SHELF);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE_BOOK_SHELF);
+        }
+    }
+
+    // EFFECTS: saves the StudyRooms to file
+    private void saveStudyRooms() {
+        try {
+            jsonWriterStudyRooms.open();
+            jsonWriterStudyRooms.write(studyRooms);
+            jsonWriterStudyRooms.close();
+            System.out.println("Saved Accounts to " + JSON_STORE_STUDY_ROOMS);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE_STUDY_ROOMS);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads studyRooms from file
+    private void loadStudyRooms() {
+        try {
+            studyRooms = jsonReaderStudyRooms.read();
+            System.out.println("Loaded Accounts from " + JSON_STORE_STUDY_ROOMS);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE_STUDY_ROOMS);
+        }
     }
 }
 

@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+// Represents a reader that reads Accounts from JSON data stored in file
+// part of this code were cited from JsonSerializationDemo in CPSC 210 course
 public class JsonReaderAccounts {
     private String source;
 
@@ -62,34 +64,19 @@ public class JsonReaderAccounts {
     // MODIFIES: wr
     // EFFECTS: parses StudyRoom from JSON object and adds it to StudyRooms
     private void addUser(Accounts accounts, JSONObject jsonObject) {
-        User user = getUser(jsonObject);
-        accounts.addUser(user.getUsername(), user.getPassword());
-        int userIndex = accounts.loginUserIndex(user.getUsername(), user.getPassword());
-        User userPulled = accounts.getUser(userIndex);
-        userPulled.setBookborrowed(user.getBookborrowed());
-        userPulled.setRoomBooked((user.getRoomBooked()));
-    }
-
-    public User getUser(JSONObject jsonObject) {
-        Book bookBorrowed;
-        StudyRoom roomBooked;
         String username = jsonObject.getString("username");
         String password = jsonObject.getString("password");
-        if (jsonObject.isNull("bookBorrowed")) {
-            bookBorrowed = null;
-        } else {
-            bookBorrowed = getBook(jsonObject.getJSONObject("bookBorrowed"));
-        }
-        if (jsonObject.isNull("roomBooked")) {
-            roomBooked = null;
-        } else {
-            roomBooked = getStudyRoom(jsonObject.getJSONObject("roomBooked"));
-        }
-        User user = new User(username, password);
-        user.setRoomBooked(roomBooked);
-        user.setBookborrowed(bookBorrowed);
-        return user;
+        String bookBorrowed = jsonObject.getString("bookBorrowed");
+        String bookBorrowedIsbn = jsonObject.getString("bookBorrowedIsbn");
+        int roomBooked = jsonObject.getInt("roomBooked");
+        accounts.addUser(username, password);
+        int userIndex = accounts.loginUserIndex(username, password);
+        User userPulled = accounts.getUser(userIndex);
+        userPulled.setBookborrowed(bookBorrowed);
+        userPulled.setBookBorrowedIsbn(bookBorrowedIsbn);
+        userPulled.setRoomBooked(roomBooked);
     }
+
 
     // MODIFIES: wr
     // EFFECTS: parses StudyRoom from JSON object and adds it to StudyRooms

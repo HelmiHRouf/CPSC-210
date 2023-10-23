@@ -2,7 +2,6 @@ package persistence;
 
 import model.StudyRoom;
 import model.StudyRooms;
-import model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+// Represents a reader that reads StudyRooms from JSON data stored in file
+// part of this code were cited from JsonSerializationDemo in CPSC 210 course
 public class JsonReaderStudyRooms {
     private String source;
 
@@ -59,26 +60,22 @@ public class JsonReaderStudyRooms {
     // MODIFIES: wr
     // EFFECTS: parses StudyRoom from JSON object and adds it to StudyRooms
     private void addStudyRoom(StudyRooms studyRooms, JSONObject jsonObject) {
-        StudyRoom studyRoom = getStudyRoom(jsonObject);
+        int roomID = jsonObject.getInt("room ID");
+        String booker = jsonObject.getString("booker");
+        StudyRoom studyRoom = new StudyRoom(roomID);
+        studyRoom.setBooker(booker);
         studyRooms.addStudyRoom(studyRoom);
     }
 
     // MODIFIES: this
     // EFFECTS: a helper to parse StudyRoom from JSON object
-    public StudyRoom getStudyRoom(JSONObject jsonObject) {
-        User booker;
-        String roomID = jsonObject.getString("room ID");
-        boolean isBooked = jsonObject.getBoolean("isBooked");
-        if (jsonObject.isNull("booker")) {
-            booker = null;
-        } else {
-            booker  = readUser(jsonObject.getJSONObject("booker"));
-        }
-        StudyRoom studyRoom = new StudyRoom(roomID);
-        studyRoom.setBooked(isBooked);
-        studyRoom.setBooker(booker);
-        return studyRoom;
-    }
+//    public StudyRoom getStudyRoom(JSONObject jsonObject) {
+//        int roomID = jsonObject.getInt("room ID");
+//        String booker = jsonObject.getString("booker");
+//        StudyRoom studyRoom = new StudyRoom(roomID);
+//        studyRoom.setBooker(booker);
+//        return studyRoom;
+//    }
 
 
 }

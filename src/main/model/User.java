@@ -8,38 +8,46 @@ import persistence.Writable;
 public class User implements Writable {
     private String username;
     private String password;
-    private Book bookBorrowed;
-    private StudyRoom roomBooked;
+    private String bookBorrowed;
+    private String bookBorrowedIsbn;
+    private int roomBooked;
 
     // REQUIRES: username and password need to be different string
     // EFFECT: construct a new user with no book borrowed and no room booked
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.bookBorrowed = null;
-        this.roomBooked = null;
+        this.bookBorrowed = "";
+        this.bookBorrowedIsbn = "";
+        this.roomBooked = -1;
     }
 
     // EFFECTS: determine whether the user can borrow the book
     public boolean canBorrowBook() {
-        return (getBookborrowed() == null);
+        return (getBookborrowed().equals(""));
     }
 
     // EFFECTS: determine whether the user can book a study room
     public boolean canBookARoom() {
-        return (getRoomBooked() == null);
+        return (getRoomBooked() == -1);
     }
 
 
     // setter
 
-    public void setBookborrowed(Book book) {
-        this.bookBorrowed = book;
+    public void setBookborrowed(String bookTitle) {
+        this.bookBorrowed = bookTitle;
     }
 
-    public void setRoomBooked(StudyRoom studyRoom) {
-        this.roomBooked = studyRoom;
+    public void setBookBorrowedIsbn(String numIsbn) {
+        this.bookBorrowedIsbn = numIsbn;
     }
+
+    public void setRoomBooked(int roomID) {
+        this.roomBooked = roomID;
+    }
+
+
 
 
     // getter
@@ -51,11 +59,15 @@ public class User implements Writable {
         return this.password;
     }
 
-    public Book getBookborrowed() {
+    public String getBookborrowed() {
         return this.bookBorrowed;
     }
 
-    public StudyRoom getRoomBooked() {
+    public String getBookBorrowedIsbn() {
+        return this.bookBorrowedIsbn;
+    }
+
+    public int getRoomBooked() {
         return this.roomBooked;
     }
 
@@ -64,8 +76,9 @@ public class User implements Writable {
         JSONObject jsonUser = new JSONObject();
         jsonUser.put("username", username);
         jsonUser.put("password", password);
-        jsonUser.put("bookBorrowed", bookBorrowed.toJson());
-        jsonUser.put("roomBooked", roomBooked.toJson());
+        jsonUser.put("bookBorrowed", bookBorrowed);
+        jsonUser.put("bookBorrowedIsbn", bookBorrowedIsbn);
+        jsonUser.put("roomBooked", roomBooked);
         return jsonUser;
     }
 }

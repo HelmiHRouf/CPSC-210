@@ -1,0 +1,13 @@
+{
+    "librarian": [{
+        "password": "111",
+        "username": "joe"
+    }],
+    "user": [{
+        "password": "222",
+        "bookBorrowedIsbn": "",
+        "roomBooked": -1,
+        "bookBorrowed": "",
+        "username": "sam"
+    }]
+}

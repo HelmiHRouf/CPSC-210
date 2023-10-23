@@ -20,10 +20,10 @@ public class StudyRoomsTest {
     @BeforeEach
     void runBefore() {
         testStudyRooms = new StudyRooms();
-        studyRoom1 = new StudyRoom("0");
-        studyRoom2 = new StudyRoom("1");
-        studyRoom3 = new StudyRoom("2");
-        studyRoom4 = new StudyRoom("3");
+        studyRoom1 = new StudyRoom(0);
+        studyRoom2 = new StudyRoom(1);
+        studyRoom3 = new StudyRoom(2);
+        studyRoom4 = new StudyRoom(3);
         user1 = new User("aaa", "bbb");
         user2 = new User("ccc", "ddd");
     }
@@ -49,7 +49,7 @@ public class StudyRoomsTest {
         assertTrue(testStudyRooms.canTheRoomBooked(0));
         assertTrue(testStudyRooms.canTheRoomBooked(1));
         assertTrue(testStudyRooms.canTheRoomBooked(2));
-        studyRoom1.setBooked(true);
+        studyRoom1.setBooker(user1.getUsername());
         assertFalse(testStudyRooms.canTheRoomBooked(0));
     }
 
@@ -60,20 +60,20 @@ public class StudyRoomsTest {
         testStudyRooms.addStudyRoom(studyRoom3);
 
         testStudyRooms.bookStudyRoom(user1, 0);
-        assertEquals(user1, studyRoom1.getBooked());
-        assertTrue(studyRoom1.getIsBooked());
+        assertEquals(user1.getUsername(), studyRoom1.getBooked());
+        assertEquals(0, user1.getRoomBooked());
 
         testStudyRooms.bookStudyRoom(user2, 1);
-        assertEquals(user2, studyRoom2.getBooked());
-        assertTrue(studyRoom1.getIsBooked());
+        assertEquals(user2.getUsername(), studyRoom2.getBooked());
+        assertEquals(1, user2.getRoomBooked());
 
         testStudyRooms.cancelBookStudyRoom(user1);
-        assertEquals(null, studyRoom1.getBooked());
-        assertFalse(studyRoom1.getIsBooked());
+        assertEquals("", studyRoom1.getBooked());
+        assertEquals(-1, user1.getRoomBooked());
 
         testStudyRooms.cancelBookStudyRoom(user2);
-        assertEquals(null, studyRoom2.getBooked());
-        assertFalse(studyRoom2.getIsBooked());
+        assertEquals("", studyRoom2.getBooked());
+        assertEquals(-1, user2.getRoomBooked());
     }
 
     @Test
@@ -90,8 +90,8 @@ public class StudyRoomsTest {
 
         assertEquals(testList, testStudyRooms.getListStudyRoom());
 
-        studyRoom1.setBooked(true);
-        studyRoom3.setBooked(true);
+        studyRoom1.setBooker("Helmi");
+        studyRoom3.setBooker("Dany");
 
         List<StudyRoom> testList2 = new ArrayList<>();
         testList2.add(studyRoom1);

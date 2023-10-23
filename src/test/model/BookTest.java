@@ -16,11 +16,7 @@ public class BookTest {
         assertEquals("Fundamental Astronomy", testBook.getTitle());
         assertEquals(2000, testBook.getYearPublished());
         assertEquals("scientific", testBook.getCategory());
-        assertEquals(10201010, testBook.getNumIsbn());
-        assertFalse(testBook.getIsBorrowed());
-        assertNull(testBook.getBorrower());
-
-        testBook.setBorrowed(true);
-        assertTrue(testBook.getIsBorrowed());
+        assertEquals("10201010", testBook.getNumIsbn());
+        assertEquals(testBook.getBorrower(), "");
     }
 }

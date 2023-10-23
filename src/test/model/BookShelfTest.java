@@ -74,11 +74,11 @@ public class BookShelfTest {
 
     @Test
     void testBookBorrowed() {
-        book2.setBorrowed(true);
-        book4.setBorrowed(true);
+        book2.setBorrower(user1.getUsername());
+        book4.setBorrower(user2.getUsername());
         testBookShelf.addBook(book1);
         testBookShelf.addBook(book2);
-        testBookShelf.addBook(book1);
+        testBookShelf.addBook(book3);
         testBookShelf.addBook(book4);
 
         List<Book> testBooks = new ArrayList<>();
@@ -86,7 +86,7 @@ public class BookShelfTest {
         testBooks.add(book4);
 
         assertEquals(testBooks, testBookShelf.getBorrowedBooks());
-        book2.setBorrowed(false);
+        book2.setBorrower("");
         testBooks.remove(0);
 
         assertEquals(testBooks, testBookShelf.getBorrowedBooks());
@@ -133,7 +133,7 @@ public class BookShelfTest {
         assertTrue(testBookShelf.isBookBorrowed("21421282"));
         assertTrue(testBookShelf.isBookBorrowed("10201010"));
         assertTrue(testBookShelf.isBookBorrowed("13348593"));
-        book3.setBorrowed(true);
+        book3.setBorrower(user1.getUsername());
         assertFalse(testBookShelf.isBookBorrowed("13348593"));
         assertFalse(testBookShelf.isBookBorrowed("100302101"));
     }
@@ -145,22 +145,25 @@ public class BookShelfTest {
         testBookShelf.addBook(book3);
 
         testBookShelf.borrowBook(user1, "13348593");
-        assertEquals(book3, user1.getBookborrowed());
-        assertTrue(book3.getIsBorrowed());
+        assertEquals(book3.getTitle(), user1.getBookborrowed());
+        assertEquals(book3.getBorrower(), user1.getUsername());
+        assertEquals(book3.getNumIsbn(), user1.getBookBorrowedIsbn());
+
 
         testBookShelf.borrowBook(user2, "10201010");
-        assertEquals(book1, user2.getBookborrowed());
-        assertTrue(book1.getIsBorrowed());
-        assertFalse(book2.getIsBorrowed());
+        assertEquals(book1.getTitle(), user2.getBookborrowed());
+        assertEquals(book1.getBorrower(), user2.getUsername());
+        assertEquals(book1.getNumIsbn(), user2.getBookBorrowedIsbn());
 
         testBookShelf.returnBook(user1);
-        assertNull(user1.getBookborrowed());
-        assertFalse(book3.getIsBorrowed());
+        assertEquals(user1.getBookborrowed(), "");
+        assertEquals(user1.getBookBorrowedIsbn(), "");
+        assertEquals(book3.getBorrower(), "");
 
         testBookShelf.returnBook(user2);
-        assertNull(user2.getBookborrowed());
-        assertFalse(book1.getIsBorrowed());
-        assertFalse(book2.getIsBorrowed());
+        assertEquals(user2.getBookborrowed(), "");
+        assertEquals(user2.getBookBorrowedIsbn(), "");
+        assertEquals(book1.getBorrower(), "");
     }
 
 }

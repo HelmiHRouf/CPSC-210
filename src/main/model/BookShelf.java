@@ -108,6 +108,7 @@ public class BookShelf implements Writable {
     public void borrowBook(User user, String isbn) {
         Book borrowedBook = findBookIsbn(isbn);
         user.setBookborrowed(borrowedBook.getTitle());
+        user.setBookBorrowedIsbn(borrowedBook.getNumIsbn());
         borrowedBook.setBorrower(user.getUsername());
     }
 

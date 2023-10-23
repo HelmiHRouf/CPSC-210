@@ -2,7 +2,6 @@ package persistence;
 
 import model.Book;
 import model.BookShelf;
-import model.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+// Represents a reader that reads BookShelf from JSON data stored in file
+// part of this code were cited from JsonSerializationDemo in CPSC 210 course
 public class JsonReaderBookShelf {
     private String source;
 
@@ -49,7 +50,7 @@ public class JsonReaderBookShelf {
     // MODIFIES: bookShelf
     // EFFECTS: parses listStudyRoom from JSON object and adds them to StudyRooms
     private void addBooks(BookShelf bookShelf, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("books");
+        JSONArray jsonArray = jsonObject.getJSONArray("bookList");
         for (Object json : jsonArray) {
             JSONObject nextBook = (JSONObject) json;
             addBook(bookShelf, nextBook);
@@ -59,30 +60,24 @@ public class JsonReaderBookShelf {
     // MODIFIES: wr
     // EFFECTS: parses StudyRoom from JSON object and adds it to StudyRooms
     private void addBook(BookShelf bookShelf, JSONObject jsonObject) {
-        Book book = getBook(jsonObject);
+        String title = jsonObject.getString("title");
+        int yearPublished = jsonObject.getInt("year published");
+        String category = jsonObject.getString("category");
+        String numIsbn = jsonObject.getString("num ISBN");
+        String borrower = jsonObject.getString("borrower");
+        Book book = new Book(title, yearPublished, category, numIsbn);
+        book.setBorrower(borrower);
         bookShelf.addBook(book);
     }
 
-    public Book getBook(JSONObject jsonObject) {
-        User borrower;
-        String title = jsonObject.getString("title");
-        int yearPublished = jsonObject.getInt("year published");
-        String numIsbn = jsonObject.getString("num ISBN");
-        String category = jsonObject.getString("category");
-        boolean isBooked = jsonObject.getBoolean("is borrowed");
-        if (jsonObject.isNull("borrower")) {
-            borrower  = null;
-        } else {
-            JSONObject borrowerJson = jsonObject.getJSONObject("borrower");
-            String borrowerUsername = borrowerJson.getString("username");
-            String borrowerPassword = borrowerJson.getString("password");
-
-            borrower = new User(borrowerUsername, borrowerPassword);
-            borrower.setBookborrowed(new Book());
-        }
-        Book book = new Book(title, yearPublished, category, numIsbn);
-        book.setBorrowed(isBooked);
-        book.setBorrower(borrower);
-        return book;
-    }
+//    public Book getBook(JSONObject jsonObject) {
+//        String title = jsonObject.getString("title");
+//        int yearPublished = jsonObject.getInt("year published");
+//        String category = jsonObject.getString("category");
+//        String numIsbn = jsonObject.getString("num ISBN");
+//        String borrower = jsonObject.getString("borrower");
+//        Book book = new Book(title, yearPublished, category, numIsbn);
+//        book.setBorrower(borrower);
+//        return book;
+//    }
 }

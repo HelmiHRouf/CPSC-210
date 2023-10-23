@@ -35,23 +35,23 @@ public class StudyRooms implements Writable {
     public void bookStudyRoom(User user, int roomId) {
         StudyRoom studyRoom = listStudyRoom.get(roomId);
         studyRoom.setBooker(user.getUsername());
-        user.setRoomBooked(studyRoom);
+        user.setRoomBooked(studyRoom.getRoomID());
     }
 
     // MODIFIES: this, User
     // EFFECTS: cancel book a study room, remove the booked information, booker information, and who booked the room
     public void cancelBookStudyRoom(User user) {
-        String studyRoom = user.getRoomBooked();
-        studyRoom.setBooked(false);
-        studyRoom.setBooker(null);
-        user.setRoomBooked(null);
+        int studyRoom = user.getRoomBooked();
+        user.setRoomBooked(-1);
+        StudyRoom room = listStudyRoom.get(studyRoom);
+        room.setBooker("");
     }
 
     // EFFECTS: return all the study room that is booked
     public List<StudyRoom> listBookedRooms() {
         List<StudyRoom> listBookedRooms = new ArrayList<>();
         for (StudyRoom room : listStudyRoom) {
-            if (room.getIsBooked()) {
+            if (!room.getBooked().equals("")) {
                 listBookedRooms.add(room);
             }
         }

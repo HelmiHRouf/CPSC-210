@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+// Represents a writer that writes JSON representation of Accounts to file
+// part of this code were cited from JsonSerializationDemo in CPSC 210 course
 public class JsonWriterAccounts {
     private static final int TAB = 4;
     private PrintWriter writer;

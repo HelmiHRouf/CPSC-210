@@ -11,27 +11,24 @@ public class StudyRoomTest {
 
     @Test
     void testConstructor() {
-        studyRoom = new StudyRoom("0");
-        assertEquals("0", studyRoom.getRoomID());
-        assertFalse(studyRoom.getIsBooked());
-        assertEquals(null, studyRoom.getBooked());
+        studyRoom = new StudyRoom(0);
+        assertEquals(0, studyRoom.getRoomID());
+        assertEquals("", studyRoom.getBooked());
     }
 
     @Test
     void testsetBookedAndBooker() {
         user = new User("aaa", "bbb");
-        studyRoom = new StudyRoom("1");
-        assertEquals("1", studyRoom.getRoomID());
-        assertFalse(studyRoom.getIsBooked());
-        assertEquals(null, studyRoom.getBooked());
+        String userUsername = user.getUsername();
+        studyRoom = new StudyRoom(1);
+        assertEquals(1, studyRoom.getRoomID());
+        assertEquals("", studyRoom.getBooked());
 
-        studyRoom.setBooked(true);
-        assertTrue(studyRoom.getIsBooked());
+        studyRoom.setBooker(user.getUsername());
 
-        studyRoom.setBooker(user);
-        assertEquals(user, studyRoom.getBooked());
+        assertEquals(user.getUsername(), studyRoom.getBooked());
 
-        studyRoom.setBooker(null);
-        assertEquals(null, studyRoom.getBooked());
+        studyRoom.setBooker("");
+        assertEquals("", studyRoom.getBooked());
     }
 }
