@@ -18,7 +18,8 @@ User Stories:
     - to be able to **book** the study room inside the library.
     - to be able to **cancel book** of the study room inside the library.
     - to be able to **log out** and back to the main interface.
-    - to be able to **re-login** and retrieve the book and study room information that the user already did.
+    - to be able to **save** every change that the user made
+    - to be able to **load** the existing library
   
 - As a librarian:
     - To be able to **make an account** containing Username and Password.
@@ -28,6 +29,7 @@ User Stories:
     - To be able to **remove** book collection from the library's inventory.
     - To be able to **track** list of books and its information.
     - To be able to **track** list of rooms and its information.
-    - To be able to **log out** and back to the main interface.
-    - To be able to **re-login** and doing the having the same feature as before
+    - To be able to **log out** and back to the main interface. 
+    - to be able to **save** every change that the librarian made
+    - to be able to **load** the existing library
 
