@@ -71,7 +71,7 @@ public class User implements Writable {
         return this.roomBooked;
     }
 
-
+    // EFFECTS: turn User object to JSON object
     public JSONObject toJson() {
         JSONObject jsonUser = new JSONObject();
         jsonUser.put("username", username);

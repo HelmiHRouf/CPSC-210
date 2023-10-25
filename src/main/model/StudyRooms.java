@@ -63,6 +63,7 @@ public class StudyRooms implements Writable {
         return listStudyRoom;
     }
 
+    // EFFECTS: turn StudyRooms object to JSON object
     @Override
     public JSONObject toJson() {
         JSONObject jsonStudyRooms = new JSONObject();
@@ -70,6 +71,7 @@ public class StudyRooms implements Writable {
         return jsonStudyRooms;
     }
 
+    // EFFECTS: turn StudyRoom object to JSON object, put it to the StudyRooms JSON object.
     private JSONArray studyRoomToJson() {
         JSONArray jsonArray = new JSONArray();
         for (StudyRoom studyRoom : listStudyRoom) {

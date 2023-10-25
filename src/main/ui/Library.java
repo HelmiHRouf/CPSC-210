@@ -26,7 +26,8 @@ public class Library {
     private BookShelf bookShelf;
     private StudyRooms studyRooms;
 
-
+    // MODIFIES: this
+    // EFFECT: construct a Library kiosk app
     public Library() {
         jsonWriterAccounts = new JsonWriterAccounts(JSON_STORE_ACCOUNTS);
         jsonReaderAccounts = new JsonReaderAccounts(JSON_STORE_ACCOUNTS);
@@ -49,9 +50,7 @@ public class Library {
         command = input.next();
         command = command.toLowerCase();
         if (command.equals("y")) {
-            loadAccounts();
-            loadBookShelf();
-            loadStudyRooms();
+            loadAll();
             runLibraryHelper();
         } else if (command.equals("n")) {
             init();
@@ -60,6 +59,7 @@ public class Library {
 
     }
 
+    // EFFECT: Processes user input, take role as a helper method
     private void runLibraryHelper() {
         boolean stillHere = true;
         String command = null;
@@ -82,6 +82,14 @@ public class Library {
         saveBeforeQuit();
     }
 
+    // EFFECTS: load all saved information to the main.
+    private void loadAll() {
+        loadAccounts();
+        loadBookShelf();
+        loadStudyRooms();
+    }
+
+    // EFFECTS: ask a save option before quitting the app.
     private void saveBeforeQuit() {
         String command = null;
         System.out.println("Do you want to save all changes in Library?");
@@ -90,13 +98,18 @@ public class Library {
         command = input.next();
         command = command.toLowerCase();
         if (command.equals("y")) {
-            saveAccounts();
-            saveBookShelf();
-            saveStudyRooms();
+            saveAll();
         } else if (command.equals("n")) {
             System.out.println("Quit without saving...");
         }
         System.out.println("\n Thank you for visiting our Library, Goodbye!");
+    }
+
+    // EFFECTS: save all information from the main.
+    private void saveAll() {
+        saveAccounts();
+        saveBookShelf();
+        saveStudyRooms();
     }
 
     // MODIFIES: this
@@ -164,7 +177,8 @@ public class Library {
         System.out.println("\nLogged out!");
     }
 
-
+    // MODIFIES: this
+    // EFFECTS: show sub-options for Librarian branch
     private void librarianUI() {
         String command = null;
         System.out.println("Insert Username");
@@ -208,6 +222,7 @@ public class Library {
         System.out.println("\nLogging out... Logged out!");
     }
 
+    // EFFECTS: display user menu
     private void displayUserMenu(User user) {
         System.out.println("\nWelcome User " + user.getUsername() + "! Select Options:");
         System.out.println("\tf -> find book");
@@ -218,6 +233,7 @@ public class Library {
         System.out.println("\tq -> Log out");
     }
 
+    // EFFECTS: display librarian menu
     private void displayLibrarianMenu(Librarian librarian) {
         System.out.println("\nWelcome Librarian " + librarian.getUsername() + "! Select Options:");
         System.out.println("\ta -> add book");

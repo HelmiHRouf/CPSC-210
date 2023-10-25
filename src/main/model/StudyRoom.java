@@ -16,14 +16,6 @@ public class StudyRoom implements Writable {
         this.booker = "";
     }
 
-    // setter
-
-    // MODIFIES: this
-    // EFFECTS: set book with the given boolean
-//    public void setBooked(boolean booked) {
-//        this.isBooked = booked;
-//    }
-
     // MODIFIES: this
     // EFFECTS: set booker with the given user
     public void setBooker(String username) {
@@ -36,14 +28,12 @@ public class StudyRoom implements Writable {
         return this.roomID;
     }
 
-//    public boolean getIsBooked() {
-//        return isBooked;
-//    }
 
     public String getBooked() {
         return this.booker;
     }
 
+    // EFFECTS: turn StudyRoom object to JSON object
     @Override
     public JSONObject toJson() {
         JSONObject jsonStudyRoom = new JSONObject();

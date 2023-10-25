@@ -52,14 +52,12 @@ public class Book implements Writable {
         return numIsbn;
     }
 
-//    public Boolean getIsBorrowed() {
-//        return isBorrowed;
-//    }
 
     public String getBorrower() {
         return borrower;
     }
 
+    // EFFECTS: return Book object to JSON object
     public JSONObject toJson() {
         JSONObject jsonBook = new JSONObject();
         jsonBook.put("title", title);

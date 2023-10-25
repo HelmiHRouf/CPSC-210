@@ -39,15 +39,15 @@ public class JsonReaderAccounts {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses StudyRooms from JSON object and returns it
+    // EFFECTS: parses Accounts from JSON object and returns it
     private Accounts parseAccounts(JSONObject jsonObject) {
         Accounts accounts = new Accounts();
         addAccounts(accounts, jsonObject);
         return accounts;
     }
 
-    // MODIFIES: studyRooms
-    // EFFECTS: parses listStudyRoom from JSON object and adds them to StudyRooms
+    // MODIFIES: Accounts
+    // EFFECTS: parses userList and librarianList from JSON object and adds them to Accounts
     private void addAccounts(Accounts accounts, JSONObject jsonObject) {
         JSONArray jsonArrayUser = jsonObject.getJSONArray("user");
         JSONArray jsonArrayLibrarian = jsonObject.getJSONArray("librarian");
@@ -61,8 +61,8 @@ public class JsonReaderAccounts {
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses StudyRoom from JSON object and adds it to StudyRooms
+    // MODIFIES: Accounts
+    // EFFECTS: parses user from JSON object and adds it to Accounts
     private void addUser(Accounts accounts, JSONObject jsonObject) {
         String username = jsonObject.getString("username");
         String password = jsonObject.getString("password");
@@ -78,8 +78,8 @@ public class JsonReaderAccounts {
     }
 
 
-    // MODIFIES: wr
-    // EFFECTS: parses StudyRoom from JSON object and adds it to StudyRooms
+    // MODIFIES: Accounts
+    // EFFECTS: parses librarian from JSON object and adds it to Accounts
     private void addLibrarian(Accounts accounts, JSONObject jsonObject) {
         String username = jsonObject.getString("username");
         String password = jsonObject.getString("password");

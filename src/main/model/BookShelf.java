@@ -123,6 +123,7 @@ public class BookShelf implements Writable {
     }
 
 
+    // EFFECTS: turn BookShelf object to JSON object
     public JSONObject toJson() {
         JSONObject jsonBookShelf = new JSONObject();
         jsonBookShelf.put("bookList", bookToJson());

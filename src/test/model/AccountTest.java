@@ -30,7 +30,6 @@ public class AccountTest {
         librarian2Id = "librarian2Id";
         librarian2Pw = "librarian2Pw";
     }
-    // Do 9 test
 
     @Test
     void testConstructor() {

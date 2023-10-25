@@ -67,15 +67,5 @@ public class JsonReaderStudyRooms {
         studyRooms.addStudyRoom(studyRoom);
     }
 
-    // MODIFIES: this
-    // EFFECTS: a helper to parse StudyRoom from JSON object
-//    public StudyRoom getStudyRoom(JSONObject jsonObject) {
-//        int roomID = jsonObject.getInt("room ID");
-//        String booker = jsonObject.getString("booker");
-//        StudyRoom studyRoom = new StudyRoom(roomID);
-//        studyRoom.setBooker(booker);
-//        return studyRoom;
-//    }
-
 
 }

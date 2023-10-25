@@ -48,7 +48,7 @@ public class JsonReaderBookShelf {
     }
 
     // MODIFIES: bookShelf
-    // EFFECTS: parses listStudyRoom from JSON object and adds them to StudyRooms
+    // EFFECTS: parses bookList from JSON object and adds them to bookShelf
     private void addBooks(BookShelf bookShelf, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("bookList");
         for (Object json : jsonArray) {
@@ -57,8 +57,8 @@ public class JsonReaderBookShelf {
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses StudyRoom from JSON object and adds it to StudyRooms
+    // MODIFIES: bookShelf
+    // EFFECTS: parses book from JSON object and adds it to bookList
     private void addBook(BookShelf bookShelf, JSONObject jsonObject) {
         String title = jsonObject.getString("title");
         int yearPublished = jsonObject.getInt("year published");
@@ -70,14 +70,5 @@ public class JsonReaderBookShelf {
         bookShelf.addBook(book);
     }
 
-//    public Book getBook(JSONObject jsonObject) {
-//        String title = jsonObject.getString("title");
-//        int yearPublished = jsonObject.getInt("year published");
-//        String category = jsonObject.getString("category");
-//        String numIsbn = jsonObject.getString("num ISBN");
-//        String borrower = jsonObject.getString("borrower");
-//        Book book = new Book(title, yearPublished, category, numIsbn);
-//        book.setBorrower(borrower);
-//        return book;
-//    }
+
 }

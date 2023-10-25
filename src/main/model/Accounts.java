@@ -108,6 +108,7 @@ public class Accounts implements Writable {
         return this.librarianList;
     }
 
+    // EFFECTS: return Accounts object to JSON object
     @Override
     public JSONObject toJson() {
         JSONObject jsonAccount = new JSONObject();

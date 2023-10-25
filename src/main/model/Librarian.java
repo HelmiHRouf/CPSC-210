@@ -24,6 +24,7 @@ public class Librarian implements Writable {
         return this.password;
     }
 
+    // EFFECTS: turn Librarian object to JSON object
     @Override
     public JSONObject toJson() {
         JSONObject jsonLibrarian = new JSONObject();
