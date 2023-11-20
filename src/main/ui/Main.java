@@ -4,9 +4,6 @@ package ui;
 public class Main {
     public static void main(String[] args) {
         //new Library();
-        //new GUI();
-        //new GUICool();
         new LibraryGUI();
-        //new GUItest();
     }
 }

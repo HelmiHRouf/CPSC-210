@@ -35,7 +35,7 @@ public class StudyRooms implements Writable {
     public void bookStudyRoom(User user, int roomId) {
         StudyRoom studyRoom = listStudyRoom.get(roomId);
         studyRoom.setBooker(user.getUsername());
-        user.setRoomBooked(studyRoom.getRoomID());
+        user.setRoomBooked(roomId);
     }
 
     // MODIFIES: this, User

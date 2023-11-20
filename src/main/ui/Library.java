@@ -353,10 +353,10 @@ public class Library {
     // EFFECTS Display book based on the given ISBN
     private void findBookIsbn(String isbn) {
         Book book = bookShelf.findBookIsbn(isbn);
-        System.out.println(book.getTitle() + ", Published at " + book.getYearPublished());
         if (book == null) {
             System.out.println("Cannot Found Book with Given ISBN Number!");
         } else {
+            System.out.println(book.getTitle() + ", Published at " + book.getYearPublished());
             System.out.println("Found Book!");
         }
     }
@@ -450,6 +450,8 @@ public class Library {
         if (index < bookShelf.getBookList().size()) {
             bookShelf.remove(index);
             System.out.println("Book Has been Removed!");
+        } else {
+            System.out.println("Index not valid");
         }
     }
 

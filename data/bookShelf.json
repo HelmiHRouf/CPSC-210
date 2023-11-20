@@ -1,13 +1,13 @@
 {"bookList": [
     {
-        "borrower": "usertest",
+        "borrower": "",
         "year published": 2000,
         "title": "Fundamental Astronomy",
         "category": "scientific",
         "num ISBN": "10201010"
     },
     {
-        "borrower": "",
+        "borrower": "joe",
         "year published": 2010,
         "title": "I hope I can fly",
         "category": "fiction",

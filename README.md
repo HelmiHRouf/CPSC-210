@@ -35,8 +35,8 @@ User Stories:
 
 # Instructions for Grader
 
-- You can add Book to a BookShelf by login as a librarian -> add Book. Input correct information of the book.
-- You can remove Book in the BookShelf by login as a librarian -> remove Book. Make sure to know the ISBN of the book.
-- You can locate my visual component by...
-- You can save the state of my application by logout, and save changes before quit.
-- You can reload the state of my application by run, and select load an existing library.
+- You can add Book to a BookShelf by register->login as a librarian -> add Book. Input correct information of the book.
+- You can remove Book in the BookShelf by login as a librarian -> remove Book. Make sure to know the book index.
+- You can locate my visual component by see the app logo, go to welcome panel, or in user/librarian welcome panel.
+- You can save the state of my application by click Save all changes button in welcome panel.
+- You can reload the state of my application by run, and select yes to load an existing library.

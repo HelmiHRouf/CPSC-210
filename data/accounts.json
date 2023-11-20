@@ -7,22 +7,33 @@
         {
             "password": "rouf",
             "username": "helmi"
+        },
+        {
+            "password": "sfafasfsa",
+            "username": "asfasfas"
         }
     ],
     "user": [
         {
             "password": "111",
-            "bookBorrowedIsbn": "",
-            "roomBooked": -1,
-            "bookBorrowed": "",
+            "bookBorrowedIsbn": "21421282",
+            "roomBooked": 1,
+            "bookBorrowed": "I hope I can fly",
             "username": "joe"
         },
         {
             "password": "11111",
-            "bookBorrowedIsbn": "10201010",
-            "roomBooked": 2,
-            "bookBorrowed": "Fundamental Astronomy",
+            "bookBorrowedIsbn": "",
+            "roomBooked": -1,
+            "bookBorrowed": "",
             "username": "usertest"
+        },
+        {
+            "password": "fsafas",
+            "bookBorrowedIsbn": "",
+            "roomBooked": -1,
+            "bookBorrowed": "",
+            "username": "fdasfas"
         }
     ]
 }

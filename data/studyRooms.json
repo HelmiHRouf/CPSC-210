@@ -1,10 +1,14 @@
 {"study rooms": [
     {
         "booker": "",
+        "room ID": 0
+    },
+    {
+        "booker": "joe",
         "room ID": 1
     },
     {
-        "booker": "usertest",
+        "booker": "",
         "room ID": 2
     },
     {
