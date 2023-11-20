@@ -44,8 +44,8 @@ public class Library {
     // EFFECTS: processes user input
     private void runLibrary() {
         String command = null;
-        System.out.println("Do you want to load exsisting Library?");
-        System.out.println("\ty -> yes, get the exsisting library");
+        System.out.println("Do you want to load existing Library?");
+        System.out.println("\ty -> yes, get the existing library");
         System.out.println("\tn -> no, go to the blank library");
         command = input.next();
         command = command.toLowerCase();
@@ -376,7 +376,7 @@ public class Library {
                 System.out.println("User " + user.getUsername()
                         + " has Borrowed book " + user.getBookborrowed() + " !");
             } else {
-                System.out.println("This book has been borrowed, perhaps borrow an other book?");
+                System.out.println("This book has been borrowed/Wrong ISBN number, perhaps borrow an other book?");
             }
         } else {
             System.out.println("You already borrowed a book, please return it in advance to borrow another book!");
@@ -447,8 +447,10 @@ public class Library {
     private void doRemoveBook() {
         System.out.println("Input the index of the book");
         int index = input.nextInt();
-        bookShelf.remove(index);
-        System.out.println("Book Has been Removed!");
+        if (index < bookShelf.getBookList().size()) {
+            bookShelf.remove(index);
+            System.out.println("Book Has been Removed!");
+        }
     }
 
     // EFFECTS: return all book that is borrowed

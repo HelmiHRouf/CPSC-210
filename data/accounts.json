@@ -9,11 +9,20 @@
             "username": "helmi"
         }
     ],
-    "user": [{
-        "password": "111",
-        "bookBorrowedIsbn": "",
-        "roomBooked": -1,
-        "bookBorrowed": "",
-        "username": "joe"
-    }]
+    "user": [
+        {
+            "password": "111",
+            "bookBorrowedIsbn": "",
+            "roomBooked": -1,
+            "bookBorrowed": "",
+            "username": "joe"
+        },
+        {
+            "password": "11111",
+            "bookBorrowedIsbn": "10201010",
+            "roomBooked": 2,
+            "bookBorrowed": "Fundamental Astronomy",
+            "username": "usertest"
+        }
+    ]
 }

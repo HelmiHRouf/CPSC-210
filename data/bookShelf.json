@@ -1,6 +1,6 @@
 {"bookList": [
     {
-        "borrower": "",
+        "borrower": "usertest",
         "year published": 2000,
         "title": "Fundamental Astronomy",
         "category": "scientific",
@@ -33,5 +33,12 @@
         "title": "How Can I get Her",
         "category": "fiction",
         "num ISBN": "12460549"
+    },
+    {
+        "borrower": "",
+        "year published": 2023,
+        "title": "This is a Book",
+        "category": "whatever",
+        "num ISBN": "19284039"
     }
 ]}
