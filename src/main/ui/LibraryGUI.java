@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+// represent a library kiosk app presented with GUI
 public class LibraryGUI implements ActionListener {
     private static final String JSON_STORE_ACCOUNTS = "./data/accounts.json";
     private static final String JSON_STORE_BOOK_SHELF = "./data/bookShelf.json";
@@ -494,6 +495,7 @@ public class LibraryGUI implements ActionListener {
         welcomeLibrarianPanel.add(logOutLibrarian);
     }
 
+    // EFFECTS: display al books category
     private void findBookCategory() {
         doFindBookCategoryPanel = new JPanel();
         frame.add(doFindBookCategoryPanel);
@@ -525,6 +527,7 @@ public class LibraryGUI implements ActionListener {
         findBookCategoryHelper(panel);
     }
 
+    // EFFECTS: a helper to display al books category
     private void findBookCategoryHelper(JPanel panel) {
         findBookCategoryText = new JTextField(20);
         findBookCategoryText.setBounds(160,365,165,25);
