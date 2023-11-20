@@ -3,7 +3,7 @@ package ui;
 import model.*;
 import persistence.*;
 
-import com.apple.eawt.Application;
+//import com.apple.eawt.Application;
 
 import javax.swing.*;
 import java.awt.*;
@@ -82,7 +82,7 @@ public class LibraryGUI implements ActionListener {
 
         frame = new JFrame();
         frame.setIconImage(IMAGE_ICON.getImage());
-        Application.getApplication().setDockIconImage(IMAGE_ICON.getImage());
+        //Application.getApplication().setDockIconImage(IMAGE_ICON.getImage());
         frame.setTitle("Library Kiosk Software");
         frame.setSize(1000, 800);
         frame.setResizable(true);
