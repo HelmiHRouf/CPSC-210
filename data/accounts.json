@@ -11,14 +11,18 @@
         {
             "password": "sfafasfsa",
             "username": "asfasfas"
+        },
+        {
+            "password": "dany",
+            "username": "mamang"
         }
     ],
     "user": [
         {
             "password": "111",
-            "bookBorrowedIsbn": "21421282",
-            "roomBooked": 1,
-            "bookBorrowed": "I hope I can fly",
+            "bookBorrowedIsbn": "019292012",
+            "roomBooked": -1,
+            "bookBorrowed": "dany",
             "username": "joe"
         },
         {
@@ -34,6 +38,13 @@
             "roomBooked": -1,
             "bookBorrowed": "",
             "username": "fdasfas"
+        },
+        {
+            "password": "1Azxsdfghjkl_",
+            "bookBorrowedIsbn": "",
+            "roomBooked": -1,
+            "bookBorrowed": "",
+            "username": "bblasius"
         }
     ]
 }

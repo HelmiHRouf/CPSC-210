@@ -22,6 +22,7 @@ public class StudyRooms implements Writable {
     // EFFECTS: add a study room in a study rooms;
     public void addStudyRoom(StudyRoom studyRoom) {
         this.listStudyRoom.add(studyRoom);
+        EventLog.getInstance().logEvent(new Event("Added Study Room " + studyRoom.getRoomID()));
     }
 
     // EFFECTS: decide whether the room can be booked
@@ -36,6 +37,8 @@ public class StudyRooms implements Writable {
         StudyRoom studyRoom = listStudyRoom.get(roomId);
         studyRoom.setBooker(user.getUsername());
         user.setRoomBooked(roomId);
+        EventLog.getInstance().logEvent(new Event("Study room " + roomId + " booked by "
+                + user.getUsername()));
     }
 
     // MODIFIES: this, User
@@ -45,6 +48,8 @@ public class StudyRooms implements Writable {
         user.setRoomBooked(-1);
         StudyRoom room = listStudyRoom.get(studyRoom);
         room.setBooker("");
+        EventLog.getInstance().logEvent(new Event("Study room " + studyRoom + " cancelled by "
+                + user.getUsername()));
     }
 
     // EFFECTS: return all the study room that is booked
@@ -55,11 +60,13 @@ public class StudyRooms implements Writable {
                 listBookedRooms.add(room);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Display all study rooms that is booked"));
         return listBookedRooms;
     }
 
     // EFFECTS: pass all the StudyRoom
     public List<StudyRoom> getListStudyRoom() {
+        EventLog.getInstance().logEvent(new Event("Display study rooms"));
         return listStudyRoom;
     }
 

@@ -7,7 +7,7 @@
         "num ISBN": "10201010"
     },
     {
-        "borrower": "joe",
+        "borrower": "",
         "year published": 2010,
         "title": "I hope I can fly",
         "category": "fiction",
@@ -40,5 +40,40 @@
         "title": "This is a Book",
         "category": "whatever",
         "num ISBN": "19284039"
+    },
+    {
+        "borrower": "",
+        "year published": 2121,
+        "title": "blasius",
+        "category": "gak mandi",
+        "num ISBN": "21212121"
+    },
+    {
+        "borrower": "joe",
+        "year published": 2019,
+        "title": "dany",
+        "category": "thriller",
+        "num ISBN": "019292012"
+    },
+    {
+        "borrower": "",
+        "year published": 2000,
+        "title": "seblak",
+        "category": "culinary",
+        "num ISBN": "1092019"
+    },
+    {
+        "borrower": "",
+        "year published": 2009,
+        "title": "local bussines",
+        "category": "bussines",
+        "num ISBN": "10291010"
+    },
+    {
+        "borrower": "",
+        "year published": 1999,
+        "title": "winter jacket",
+        "category": "collosal",
+        "num ISBN": "10291048"
     }
 ]}

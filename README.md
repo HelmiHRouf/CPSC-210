@@ -40,3 +40,60 @@ User Stories:
 - You can locate my visual component by see the app logo, go to welcome panel, or in user/librarian welcome panel.
 - You can save the state of my application by click Save all changes button in welcome panel.
 - You can reload the state of my application by run, and select yes to load an existing library.
+
+# Phase 4: Task 2
+Sun Nov 26 17:43:49 PST 2023
+Event log cleared.
+
+Sun Nov 26 17:44:06 PST 2023
+Added User: naufal
+
+Sun Nov 26 17:44:15 PST 2023
+Login User naufal success
+
+Sun Nov 26 17:44:17 PST 2023
+Display books category
+
+Sun Nov 26 17:44:21 PST 2023
+Display all books with collosal category
+
+Sun Nov 26 17:44:27 PST 2023
+Display all books from 2020
+
+Sun Nov 26 17:44:32 PST 2023
+Display all books from 2000
+
+Sun Nov 26 17:45:00 PST 2023
+Display all books from 2000
+
+Sun Nov 26 17:45:08 PST 2023
+Book Fundamental Astronomy borrowed by naufal
+
+Sun Nov 26 17:45:10 PST 2023
+Book Fundamental Astronomy returned by naufal
+
+Sun Nov 26 17:45:14 PST 2023
+Study room 4 booked by naufal
+
+Sun Nov 26 17:45:16 PST 2023
+Study room 4 cancelled by naufal
+
+Sun Nov 26 17:45:26 PST 2023
+Login Librarian helmi success
+
+Sun Nov 26 17:45:43 PST 2023
+Book mars asia added to bookshelf
+
+Sun Nov 26 17:45:48 PST 2023
+Display all books
+
+Sun Nov 26 17:45:48 PST 2023
+Book dany removed to bookshelf
+
+# Phase 4: Task 3
+
+If I have more time, I would like to re-factor my LibraryGUI class into multiple classes to improve the cohesion and
+to adhere the single responsibility principle. This may be done by splitting each panel (to load, to login for each 
+user and librarian, and menu for user and librarian) to separated class.
+
+

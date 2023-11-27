@@ -28,6 +28,7 @@ public class Accounts implements Writable {
     public void addUser(String username, String password) {
         User user = new User(username, password);
         userList.add(user);
+        EventLog.getInstance().logEvent(new Event("Added User: " + username));
     }
 
     // REQUIRES: the librarian cannot have the same username along each other
@@ -36,15 +37,18 @@ public class Accounts implements Writable {
     public void addLibrarian(String username, String password) {
         Librarian librarian = new Librarian(username, password);
         librarianList.add(librarian);
+        EventLog.getInstance().logEvent(new Event("Added Librarian: " + username));
     }
 
     // EFFECTS: give the login result to the user
     public boolean loginUser(String username, String password) {
         for (User user : userList) {
             if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+                EventLog.getInstance().logEvent(new Event("Login User " + username + " success"));
                 return true;
             }
         }
+        EventLog.getInstance().logEvent(new Event("Login User " + username + " failed"));
         return false;
     }
 
@@ -66,9 +70,11 @@ public class Accounts implements Writable {
     public boolean loginLibrarian(String username, String password) {
         for (Librarian librarian : librarianList) {
             if (username.equals(librarian.getUsername()) && password.equals(librarian.getPassword())) {
+                EventLog.getInstance().logEvent(new Event("Login Librarian " + username + " success"));
                 return true;
             }
         }
+        EventLog.getInstance().logEvent(new Event("Login Librarian " + username + " failed"));
         return false;
     }
 

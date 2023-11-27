@@ -30,6 +30,7 @@ public class BookShelf implements Writable {
                 bookListNew.add(book);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Display all books with " + pick + " category"));
         return bookListNew;
     }
 
@@ -42,23 +43,28 @@ public class BookShelf implements Writable {
                 bookListNew.add(book);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Display all books from " + year));
         return bookListNew;
     }
 
     // MODIFIES: this
     // EFFECTS: add book to the BookShelf
     public void addBook(Book book) {
+        EventLog.getInstance().logEvent(new Event("Book " + book.getTitle() + " added to bookshelf"));
         bookList.add(book);
     }
 
     // MODIFIES: this
     // EFFECTS: remove book to the BookShelf
     public void remove(int index) {
+        EventLog.getInstance().logEvent(new Event("Book " + bookList.get(index).getTitle()
+                + " removed to bookshelf"));
         bookList.remove(index);
     }
 
     // EFFECTS: pass back all book
     public List<Book> getBookList() {
+        EventLog.getInstance().logEvent(new Event("Display all books"));
         return bookList;
     }
 
@@ -70,6 +76,7 @@ public class BookShelf implements Writable {
                 listBorrowedBooks.add(book);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Display all borrowed books"));
         return listBorrowedBooks;
     }
 
@@ -80,6 +87,7 @@ public class BookShelf implements Writable {
                 return book;
             }
         }
+        EventLog.getInstance().logEvent(new Event("Display book with ISBN: " + isbn));
         return null;
     }
 
@@ -90,6 +98,7 @@ public class BookShelf implements Writable {
             bookTitle.add(book.getCategory());
         }
         bookTitle =  new ArrayList<>(new HashSet<>(bookTitle));
+        EventLog.getInstance().logEvent(new Event("Display books category"));
         return bookTitle;
     }
 
@@ -110,6 +119,8 @@ public class BookShelf implements Writable {
         user.setBookborrowed(borrowedBook.getTitle());
         user.setBookBorrowedIsbn(borrowedBook.getNumIsbn());
         borrowedBook.setBorrower(user.getUsername());
+        EventLog.getInstance().logEvent(new Event("Book " + borrowedBook.getTitle() + " borrowed by "
+                + user.getUsername()));
     }
 
     // MODIFIES: this, User, Book
@@ -120,6 +131,8 @@ public class BookShelf implements Writable {
         Book book = findBookIsbn(numIsbn);
         book.setBorrower("");
         user.setBookBorrowedIsbn("");
+        EventLog.getInstance().logEvent(new Event("Book " + book.getTitle() + " returned by "
+                + user.getUsername()));
     }
 
 
