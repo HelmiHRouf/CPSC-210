@@ -42,53 +42,134 @@ User Stories:
 - You can reload the state of my application by run, and select yes to load an existing library.
 
 # Phase 4: Task 2
-Sun Nov 26 17:43:49 PST 2023
-Event log cleared.
+Tue Nov 28 10:45:10 PST 2023
+Added User: joe
 
-Sun Nov 26 17:44:06 PST 2023
-Added User: naufal
+Tue Nov 28 10:45:10 PST 2023
+Added User: usertest
 
-Sun Nov 26 17:44:15 PST 2023
-Login User naufal success
+Tue Nov 28 10:45:10 PST 2023
+Added User: fdasfas
 
-Sun Nov 26 17:44:17 PST 2023
+Tue Nov 28 10:45:10 PST 2023
+Added User: bblasius
+
+Tue Nov 28 10:45:10 PST 2023
+Added Librarian: sam
+
+Tue Nov 28 10:45:10 PST 2023
+Added Librarian: helmi
+
+Tue Nov 28 10:45:10 PST 2023
+Added Librarian: asfasfas
+
+Tue Nov 28 10:45:10 PST 2023
+Added Librarian: mamang
+
+Tue Nov 28 10:45:10 PST 2023
+Book Fundamental Astronomy added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book I hope I can fly added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book World War 2 Explained added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book Elementary C++ added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book How Can I get Her added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book This is a Book added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book blasius added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book dany added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book seblak added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book local bussines added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Book winter jacket added to bookshelf
+
+Tue Nov 28 10:45:10 PST 2023
+Added Study Room 0
+
+Tue Nov 28 10:45:10 PST 2023
+Added Study Room 1
+
+Tue Nov 28 10:45:10 PST 2023
+Added Study Room 2
+
+Tue Nov 28 10:45:10 PST 2023
+Added Study Room 3
+
+Tue Nov 28 10:45:10 PST 2023
+Added Study Room 4
+
+Tue Nov 28 10:45:10 PST 2023
+Added Study Room 5
+
+Tue Nov 28 10:45:10 PST 2023
+Added Study Room 6
+
+Tue Nov 28 10:45:17 PST 2023
+Login User joe success
+
+Tue Nov 28 10:45:18 PST 2023
 Display books category
 
-Sun Nov 26 17:44:21 PST 2023
-Display all books with collosal category
+Tue Nov 28 10:45:21 PST 2023
+Display all books with fiction category
 
-Sun Nov 26 17:44:27 PST 2023
-Display all books from 2020
-
-Sun Nov 26 17:44:32 PST 2023
+Tue Nov 28 10:45:28 PST 2023
 Display all books from 2000
 
-Sun Nov 26 17:45:00 PST 2023
-Display all books from 2000
+Tue Nov 28 10:46:04 PST 2023
+Display book with ISBN: 10201020
 
-Sun Nov 26 17:45:08 PST 2023
-Book Fundamental Astronomy borrowed by naufal
+Tue Nov 28 10:46:25 PST 2023
+Book dany returned by joe
 
-Sun Nov 26 17:45:10 PST 2023
-Book Fundamental Astronomy returned by naufal
+Tue Nov 28 10:46:31 PST 2023
+Study room 1 booked by joe
 
-Sun Nov 26 17:45:14 PST 2023
-Study room 4 booked by naufal
+Tue Nov 28 10:46:34 PST 2023
+Study room 1 cancelled by joe
 
-Sun Nov 26 17:45:16 PST 2023
-Study room 4 cancelled by naufal
+Tue Nov 28 10:46:36 PST 2023
+Display books category
 
-Sun Nov 26 17:45:26 PST 2023
-Login Librarian helmi success
+Tue Nov 28 10:46:43 PST 2023
+Display all books with gak mandi category
 
-Sun Nov 26 17:45:43 PST 2023
-Book mars asia added to bookshelf
+Tue Nov 28 10:47:16 PST 2023
+Login Librarian sam success
 
-Sun Nov 26 17:45:48 PST 2023
+Tue Nov 28 10:47:36 PST 2023
+Book farrel added to bookshelf
+
+Tue Nov 28 10:47:38 PST 2023
 Display all books
 
-Sun Nov 26 17:45:48 PST 2023
-Book dany removed to bookshelf
+Tue Nov 28 10:47:50 PST 2023
+Display all study rooms that is booked
+
+Tue Nov 28 10:47:53 PST 2023
+Display all borrowed books
+
+Tue Nov 28 10:47:58 PST 2023
+Display all books
+
+Tue Nov 28 10:47:58 PST 2023
+Book winter jacket removed to bookshelf
 
 # Phase 4: Task 3
 

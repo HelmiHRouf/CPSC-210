@@ -1335,8 +1335,6 @@ public class LibraryGUI implements ActionListener {
         loadAccounts();
         loadBookShelf();
         loadStudyRooms();
-        EventLog log = EventLog.getInstance();
-        log.clear();
     }
 
     // MODIFIES: this
