@@ -41,6 +41,10 @@ User Stories:
 - You can save the state of my application by click Save all changes button in welcome panel.
 - You can reload the state of my application by run, and select yes to load an existing library.
 
+# UML diagram
+
+<img src="UML%20diagram.png" width="700"/>
+
 # Phase 4: Task 2
 Tue Nov 28 10:45:10 PST 2023
 Added User: joe
