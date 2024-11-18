@@ -33,6 +33,16 @@ User Stories:
     - to be able to **save** every change that the librarian made
     - to be able to **load** the existing library
 
+# Login Interface
+<img width="1000" alt="Screenshot 2024-11-18 at 1 31 39 AM" src="https://github.com/user-attachments/assets/d72ac294-191d-4e95-b5a9-5d9fcc862967">
+
+# User Interface
+<img width="1005" alt="Screenshot 2024-11-18 at 1 32 01 AM" src="https://github.com/user-attachments/assets/eea1abdc-46ff-45fb-bc7d-2752a15de4e3">
+
+# Librarian Interface
+<img width="1000" alt="Screenshot 2024-11-18 at 1 32 34 AM" src="https://github.com/user-attachments/assets/2b4c5aa7-0f04-4c09-a216-0347abdca1cd">
+
+
 # Instructions for Grader
 
 - You can add Book to a BookShelf by register->login as a librarian -> add Book. Input correct information of the book.
